@@ -1,0 +1,3 @@
+/Users/trisoil/Desktop/Robomaster_Codes/Base_Moving/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir
+/Users/trisoil/Desktop/Robomaster_Codes/Base_Moving/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/trisoil/Desktop/Robomaster_Codes/Base_Moving/cmake-build-debug/CMakeFiles/rebuild_cache.dir

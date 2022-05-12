@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Base_Moving" targetName="Base_Moving.elf" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d40a1f81-4413-458f-aebe-8ce57c027b4a" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.3" />
+  </component>
+  <component name="ProjectId" id="25XI65OzjnJt1GriQgjPc5AsTOw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "cmake.loaded.for.project": "true",
+    "last_opened_file_path": "/Users/trisoil/Desktop/Robomaster_Codes/Base_Moving",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Lib/Inc" />
+      <recent name="$PROJECT_DIR$/Lib/Src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="OpenOCD 下载并运行.Daplink">
+    <configuration name="Base_Moving.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Base_Moving" TARGET_NAME="Base_Moving.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Base_Moving" RUN_TARGET_NAME="Base_Moving.elf">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="未命名" type="com.jetbrains.cidr.embedded.customgdbserver.type" factoryName="com.jetbrains.cidr.embedded.customgdbserver.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Base_Moving" TARGET_NAME="Base_Moving.elf" CONFIG_NAME="Debug" version="1">
+      <custom-gdb-server version="1" gdb-connect="" executable="" warmup-ms="0" download-type="UPDATED_ONLY" reset-cmd="monitor reset" reset-type="AFTER_DOWNLOAD">
+        <debugger kind="GDB" isBundled="true" />
+      </custom-gdb-server>
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Daplink" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Base_Moving" TARGET_NAME="Base_Moving.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="Base_Moving" RUN_TARGET_NAME="Base_Moving.elf">
+      <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="$PROJECT_DIR$/../daplink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
+        <debugger kind="GDB" isBundled="true" />
+      </openocd>
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OCD Base_Moving" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Base_Moving" TARGET_NAME="Base_Moving.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="Base_Moving" RUN_TARGET_NAME="Base_Moving.elf">
+      <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="$PROJECT_DIR$/../stlink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
+        <debugger kind="GDB" isBundled="true" />
+      </openocd>
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake 应用程序.Base_Moving.elf" />
+      <item itemvalue="OpenOCD 下载并运行.Daplink" />
+      <item itemvalue="OpenOCD 下载并运行.OCD Base_Moving" />
+      <item itemvalue="嵌入式 GDB 服务器.未命名" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="d40a1f81-4413-458f-aebe-8ce57c027b4a" name="变更" comment="" />
+      <created>1645666826540</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645666826540</updated>
+      <workItem from="1645666835380" duration="9212000" />
+      <workItem from="1646038889394" duration="607000" />
+      <workItem from="1646564304031" duration="2018000" />
+      <workItem from="1646834827049" duration="21828000" />
+      <workItem from="1647954667556" duration="83000" />
+      <workItem from="1648377457948" duration="94000" />
+      <workItem from="1648559194289" duration="7638000" />
+      <workItem from="1648651236920" duration="3180000" />
+      <workItem from="1648823506771" duration="1417000" />
+      <workItem from="1648908610002" duration="566000" />
+      <workItem from="1649228953484" duration="636000" />
+      <workItem from="1649248769001" duration="1376000" />
+      <workItem from="1649859789092" duration="784000" />
+      <workItem from="1649860891952" duration="367000" />
+      <workItem from="1649907628338" duration="734000" />
+      <workItem from="1649922828696" duration="11969000" />
+      <workItem from="1650014597606" duration="4362000" />
+      <workItem from="1650023418337" duration="32485000" />
+      <workItem from="1650264133231" duration="4127000" />
+      <workItem from="1650511734463" duration="661000" />
+      <workItem from="1650887370714" duration="683000" />
+      <workItem from="1652113227469" duration="438000" />
+      <workItem from="1652251468321" duration="182000" />
+      <workItem from="1652364437490" duration="317000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
