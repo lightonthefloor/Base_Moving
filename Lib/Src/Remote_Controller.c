@@ -189,5 +189,5 @@ void Remote_Moving_Control()
         PID_Control_Num[i].output = 0;
       }
   }
-  MecanumChassis_OmniDrive((float)-X_Speed,(float)Y_Speed,-Omega);
+  MecanumChassis_OmniDrive((float)X_Speed,(float)-Y_Speed,-Omega);
 }

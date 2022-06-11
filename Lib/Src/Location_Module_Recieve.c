@@ -7,7 +7,7 @@
 #include "Usart_Printf.h"
 #include "CAN_Operation.h"
 #include "usart.h"
-#define R 0.16f
+#define R 0.22198f
 #define PI 3.1415926f
 
 static union
@@ -26,6 +26,7 @@ Location Location_Data;
 uint8_t Locator_Rx_Data[2][99];
 int start_locator = 0;
 int x,y,a;
+float Fixed_Pos_X,Fixed_Pos_Y;
 
 extern  DMA_HandleTypeDef hdma_usart1_rx;
 
@@ -82,14 +83,17 @@ void Locator_Data_Dealer(const uint8_t *sbus_buf)
 			}
 		}
 	}
-	start_locator = 1;
+	if (start_locator > 1);
+	else start_locator++;
 	Location_Data.Pos_X = VegaData_u.ActVal[3] / 1000.0f;
 	Location_Data.Angle = VegaData_u.ActVal[0];
 	Location_Data.Pos_Y = VegaData_u.ActVal[4] / 1000.0f;
 	float Angle = PI*(Location_Data.Angle/180.0f);
 	Location_Data.Pos_X += R*((float)sin((double)Angle));
-	Location_Data.Pos_Y += R;
-	Location_Data.Pos_Y -= R*((float)cos((double)Angle));
+	Location_Data.Pos_Y += (R-(R*((float)cos((double)Angle))));
+	Location_Data.Pos_X -= Fixed_Pos_X;
+	Location_Data.Pos_Y -= Fixed_Pos_Y;
+	Location_Data.Pos_Y = -Location_Data.Pos_Y;
 	//Usart_Printf("X:%d    Y:%d\r\n",Location_Data.Pos_X,Location_Data.Pos_Y);
 	x = (int)(Location_Data.Pos_X * 1000.0f);
 	y = (int)(Location_Data.Pos_Y * 1000.0f);

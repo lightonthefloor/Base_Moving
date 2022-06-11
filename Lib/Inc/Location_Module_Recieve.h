@@ -20,6 +20,7 @@ extern float Pos_x;
 extern int start_locator;
 extern Location Location_Data;
 extern int x,y,a;
+extern float Fixed_Pos_X,Fixed_Pos_Y;
 
 extern void Locator_Rx_Init();
 

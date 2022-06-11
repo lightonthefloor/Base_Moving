@@ -10,32 +10,32 @@
 Navi_PID_Number X_PID,Y_PID,Angle_PID;
 
 void X_PID_Init(){
-	X_PID.kp = 3000.0f;
-	X_PID.ki = 0;
-	X_PID.kd = 7000.0f;
-	X_PID.max_output  = 5000;
+	X_PID.kp = 4329.0f;
+	X_PID.ki = 0.004f;
+	X_PID.kd = 6500.0f;
+	X_PID.max_output  = 4000;
 	X_PID.integral_limit = 10000;
-	X_PID.deadband = 0.06f;
+	X_PID.deadbond = 0.01f;
 	X_PID.max_err = 10;
 }
 
 void Y_PID_Init(){
-	Y_PID.kp = 3000.0f;
-	Y_PID.ki = 0;
-	Y_PID.kd = 7000.0f;
-	Y_PID.max_output  = 5000;
+	Y_PID.kp = 4329.0f;
+	Y_PID.ki = 0.004f;
+	Y_PID.kd = 6500.0f;
+	Y_PID.max_output  = 4000;
 	Y_PID.integral_limit = 10000;
-	Y_PID.deadband = 0.06f;
+	Y_PID.deadbond = 0.01f;
 	Y_PID.max_err = 10;
 }
 
 void Angle_PID_Init(){
-	Angle_PID.kp = 1.0f;
+	Angle_PID.kp = 0.5f;
 	Angle_PID.ki = 0;
-	Angle_PID.kd = 5.0f;
+	Angle_PID.kd = 0.4f;
 	Angle_PID.max_output  = 100.0f;
 	Angle_PID.integral_limit = 10000;
-	Angle_PID.deadband = 3;
+	Angle_PID.deadbond = 2.0f;
 	Angle_PID.max_err = 10;
 }
 
@@ -68,19 +68,19 @@ void Point_Navi_Move(float Set_X, float Set_Y, float Set_Angle)
 	float X_Speed = Navi_PID_Calculate(Set_X, &X_PID);
 	float Y_Speed = Navi_PID_Calculate(Set_Y, &Y_PID);
 	float Omega = Navi_PID_Calculate(Set_Angle, &Angle_PID);
-	if (fabs((double)X_PID.now_err) < X_PID.deadband)
+	if (fabs((double)X_PID.now_err) < X_PID.deadbond)
 	{
 		X_Speed = 0;
 	}
-	if (fabs((double)Y_PID.now_err) < Y_PID.deadband)
+	if (fabs((double)Y_PID.now_err) < Y_PID.deadbond)
 	{
 		Y_Speed = 0;
 	}
-	if (fabs((double)Angle_PID.now_err) < Angle_PID.deadband)
+	if (fabs((double)Angle_PID.now_err) < Angle_PID.deadbond)
 	{
 		Omega = 0;
 	}
-	Gyro_Mode_Drive(X_Speed,Y_Speed,Omega);
+	Gyro_Mode_Drive(X_Speed,-Y_Speed,Omega);
 }
 
 void Navi_Control_Init()

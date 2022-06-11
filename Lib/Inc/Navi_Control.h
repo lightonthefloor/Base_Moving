@@ -16,7 +16,7 @@ typedef struct {
 		float err_sum;
 		float now_err;
 		float last_err;
-		float deadband;
+		float deadbond;
 		float max_output;
 		float integral_limit;
 		float max_err;
