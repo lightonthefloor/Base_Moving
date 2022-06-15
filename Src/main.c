@@ -66,20 +66,41 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 int Start_Fixed = 0;
+int Arm_Finished = 0;
 float Now_Pos_X, Now_Pos_Y;
+
+void CAN_Recieved_Data_Dealer()
+{
+	int state_A = (CAN_Recieved_Message[1]<<8 | CAN_Recieved_Message[2]);
+	int state_B = (CAN_Recieved_Message[3]<<8 | CAN_Recieved_Message[4]);
+	int state_C = (CAN_Recieved_Message[5]<<8 | CAN_Recieved_Message[6]);
+	if (state_A == 1 && state_B == 1 && state_C == 1){
+		Arm_Finished = 1;
+	}
+}
+
+void Arm_Task_Send(float X,float Y,float Angle,int switch_s)
+{
+	int xx = (int)(X*1000.0f);
+	int yy = (int)(Y*1000.0f);
+	int aa = (int)Angle;
+	CAN_Transmit_Message('M',xx,yy,aa,switch_s,0x302);
+	HAL_Delay(10);
+	Arm_Finished = 0;
+}
 
 void Rough_Deadbond()
 {
 	X_PID.deadbond = 0.2f;
 	Y_PID.deadbond = 0.2f;
-	Angle_PID.deadbond = 2.0f;
+	Angle_PID.deadbond = 5.0f;
 }
 
 void Precise_Deadbond()
 {
 	X_PID.deadbond = 0.01f;
 	Y_PID.deadbond = 0.01f;
-	Angle_PID.deadbond = 5.0f;
+	Angle_PID.deadbond = 2.0f;
 }
 
 void High_Speed()
@@ -96,21 +117,24 @@ void Medium_Speed()
 
 void Point_Running_Task(float Set_X,float Set_Y,float Set_Angle)
 {
+	int Fit = 0;
 	while ((fabs(Set_X-Location_Data.Pos_X) > X_PID.deadbond) || (fabs(Set_Y - Location_Data.Pos_Y) > Y_PID.deadbond) ||
 				 (fabs(Set_Angle-Location_Data.Angle) > Angle_PID.deadbond))
 	{
 		if (Remote_Controller_Data.Remote_Controller.s[0] == 3){
 			MecanumChassis_OmniDrive(0,0,0);
 		}else if (Remote_Controller_Data.Remote_Controller.s[0] == 2){
+			if (!Start_Fixed){
+				Start_Fixed = 1;
+				Now_Pos_X = Location_Data.Pos_X;
+				Now_Pos_X = Location_Data.Pos_Y;
+			}
 			Remote_Moving_Control();
-			Start_Fixed = 1;
-			Now_Pos_X = Location_Data.Pos_X;
-			Now_Pos_X = Location_Data.Pos_Y;
 		}
 		else{
 			if (Start_Fixed){
-				Fixed_Pos_X += Location_Data.Pos_X - Now_Pos_X;
-				Fixed_Pos_Y += Location_Data.Pos_Y - Now_Pos_Y;
+				Fixed_Pos_X = Set_X - Now_Pos_X;
+				Fixed_Pos_Y = Set_Y - Now_Pos_Y;
 				Start_Fixed = 0;
 			}
 			Point_Navi_Move(Set_X,Set_Y,Set_Angle);
@@ -120,8 +144,20 @@ void Point_Running_Task(float Set_X,float Set_Y,float Set_Angle)
 
 void Wait_Task(int time)
 {
-	for (int i=1;i<=(time/10);i++){
+	while(!Arm_Finished){
 		MecanumChassis_OmniDrive(0,0,0);
+	}
+	int Fit = 0;
+	for (int i=1;i<=(time/10);i++){
+		if (Remote_Controller_Data.Remote_Controller.s[0] == 2){
+			Remote_Moving_Control();
+			i--;
+			Fit = 1;
+		}else{
+			if (Fit) break;
+			MecanumChassis_OmniDrive(0,0,0);
+			HAL_Delay(10);
+		}
 	}
 	X_PID.kp_output = 0;
 	X_PID.ki_output = 0;
@@ -138,6 +174,92 @@ void Wait_Task(int time)
 	Angle_PID.kd_output = 0;
 	Angle_PID.err_sum = 0;
 	Angle_PID.output = 0;
+}
+
+void main_task()
+{
+	while (start_locator < 1)
+	{
+		MecanumChassis_OmniDrive(0,0,0);
+	}
+	HAL_GPIO_WritePin(LED_R_GPIO_Port,LED_R_Pin,GPIO_PIN_SET);
+	Rough_Deadbond();
+	Point_Running_Task(0,3.3f,0);
+	Medium_Speed();
+	Point_Running_Task(-2.7f,3.3f,0);
+	High_Speed();
+	Precise_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-2.7f,1.41f,0);
+	Wait_Task(1000);
+	Rough_Deadbond();
+	Point_Running_Task(-2.7f,3.3f,0);
+	Precise_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,180.0f,0);
+	Point_Running_Task(-0.57f,3.5f,92);
+	Arm_Task_Send(1.0f,1.0f,0,1);
+	Wait_Task(1000);
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Wait_Task(1000);
+
+	Rough_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-3.0f,3.3f,0);
+	Precise_Deadbond();
+	Point_Running_Task(-3.0f,1.41f,0);
+	Wait_Task(1000);
+	Rough_Deadbond();
+	Point_Running_Task(-3.0f,3.3f,0);
+	Precise_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Wait_Task(1000);
+	Point_Running_Task(-0.57f,3.5f,92);
+	Wait_Task(1000);
+	Arm_Task_Send(1.0f,1.0f,0,1);
+	Wait_Task(1000);
+
+	Rough_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-3.3f,3.3f,0);
+	Precise_Deadbond();
+	Point_Running_Task(-3.3f,1.41f,0);
+	Wait_Task(1000);
+	Rough_Deadbond();
+	Point_Running_Task(-3.3f,3.3f,0);
+	Precise_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-0.57f,3.5f,92);
+	Arm_Task_Send(1.0f,1.0f,0,1);
+	Wait_Task(1000);
+
+	Rough_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-3.6f,3.3f,0);
+	Precise_Deadbond();
+	Point_Running_Task(-3.6f,1.41f,0);
+	Wait_Task(1000);
+	Rough_Deadbond();
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-3.6f,3.3f,0);
+	Precise_Deadbond();
+	Point_Running_Task(-0.57f,3.5f,92);
+	Wait_Task(1000);
+	Arm_Task_Send(1.0f,1.0f,0,1);
+	Wait_Task(1000);
+
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-5.3f,3.3f,-90);
+	Wait_Task(1000);
+	Arm_Task_Send(1.0f,1.0f,0,0);
+	Point_Running_Task(-0.57f,3.5f,92);
+	Wait_Task(1000);
+	Arm_Task_Send(1.0f,1.0f,0,1);
+	Wait_Task(1000);
+	Rough_Deadbond();
+	Point_Running_Task(0,3.3f,0);
+	Precise_Deadbond();
+	Point_Running_Task(0,0,0);
+	Wait_Task(1000);
 }
 /* USER CODE END 0 */
 
@@ -214,67 +336,7 @@ int main(void)
 //		if (Remote_Controller_Data.Remote_Controller.s[0] == 1) start_Remote = 1;
 //		else start_Remote = 0;
 ////	}
-	while (start_locator < 1)
-	{
-		MecanumChassis_OmniDrive(0,0,0);
-	}
-	HAL_GPIO_WritePin(LED_R_GPIO_Port,LED_R_Pin,GPIO_PIN_SET);
-	Rough_Deadbond();
-	Point_Running_Task(0,3.3f,0);
-	Medium_Speed();
-	Point_Running_Task(-2.7f,3.3f,0);
-	High_Speed();
-	Precise_Deadbond();
-	Point_Running_Task(-2.7f,1.41f,0);
-	Wait_Task(1000);
-	Rough_Deadbond();
-	Point_Running_Task(-2.7f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-0.57f,3.5f,92);
-	Wait_Task(1000);
-
-	Rough_Deadbond();
-	Point_Running_Task(-3.0f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-3.0f,1.41f,0);
-	Wait_Task(1000);
-	Rough_Deadbond();
-	Point_Running_Task(-3.0f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-0.57f,3.5f,92);
-	Wait_Task(1000);
-
-	Rough_Deadbond();
-	Point_Running_Task(-3.3f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-3.3f,1.41f,0);
-	Wait_Task(1000);
-	Rough_Deadbond();
-	Point_Running_Task(-3.3f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-0.57f,3.5f,92);
-	Wait_Task(1000);
-
-	Rough_Deadbond();
-	Point_Running_Task(-3.6f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-3.6f,1.41f,0);
-	Wait_Task(1000);
-	Rough_Deadbond();
-	Point_Running_Task(-3.6f,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(-0.57f,3.5f,92);
-	Wait_Task(1000);
-
-	Point_Running_Task(-5.3f,3.8f,-90);
-	Wait_Task(1000);
-	Point_Running_Task(-0.57f,3.5f,92);
-	Wait_Task(1000);
-	Rough_Deadbond();
-	Point_Running_Task(0,3.3f,0);
-	Precise_Deadbond();
-	Point_Running_Task(0,0,0);
-	Wait_Task(1000);
+	//main_task();
   while (1) {
     /* USER CODE END WHILE */
 
@@ -305,6 +367,12 @@ int main(void)
 			}
 		}
 		else if (Remote_Controller_Data.Remote_Controller.s[0] == 2) Remote_Moving_Control();
+
+//		Arm_Task_Send(0,0,180.0f,0);
+//		HAL_Delay(10);
+//		Arm_Finished = 0;
+//		while(!Arm_Finished) HAL_Delay(10);
+//		HAL_Delay(10000);
 	}
   /* USER CODE END 3 */
 }

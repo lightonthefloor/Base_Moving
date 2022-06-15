@@ -162,7 +162,8 @@ void Data_Dealer(const uint8_t *sbus_buf, RC_Ctrl_s *rc_ctrl)
 
 void Remote_Moving_Control()
 {
-  float Omega,X_Speed,Y_Speed;
+  float Omega,X_Speed,Y_Speed,Tuner_Speed;
+	Tuner_Speed = (1000.0f/660.f)*(float)Remote_Controller_Data.Remote_Controller.ch[4];
   if (Remote_Controller_Data.Remote_Controller.s[1] == 1)
   {
     X_Speed = (5000.0f/660.f)*(float)Remote_Controller_Data.Remote_Controller.ch[2];
@@ -189,5 +190,6 @@ void Remote_Moving_Control()
         PID_Control_Num[i].output = 0;
       }
   }
+	CAN_Transmit_Message('T',(int)Tuner_Speed,0,0,0,0x302);
   MecanumChassis_OmniDrive((float)X_Speed,(float)-Y_Speed,-Omega);
 }

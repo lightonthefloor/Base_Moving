@@ -17,39 +17,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d40a1f81-4413-458f-aebe-8ce57c027b4a" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="d40a1f81-4413-458f-aebe-8ce57c027b4a" name="变更" comment="Location Fixed Function added&#10;Bug fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base_Moving.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/Base_Moving.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Inc/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/Inc/Location_Module_Recieve.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Inc/Location_Module_Recieve.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/Inc/Navi_Control.h" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Inc/Navi_Control.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/Src/Location_Module_Recieve.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Src/Location_Module_Recieve.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/Src/Navi_Control.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Src/Navi_Control.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lib/Src/Remote_Controller.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Src/Remote_Controller.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lib/Src/Usart_Printf.c" beforeDir="false" afterPath="$PROJECT_DIR$/Lib/Src/Usart_Printf.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/gpio.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Src/usart.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-f638cb69c4b01d608103.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-04-17T08-48-11-0949.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-Base_Moving.elf-Debug-a801e39805350717ef51.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.hex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.map" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Base_Moving.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +78,7 @@
       <recent name="$PROJECT_DIR$/Lib/Src" />
     </key>
   </component>
-  <component name="RunManager" selected="OpenOCD 下载并运行.Daplink">
+  <component name="RunManager" selected="OpenOCD 下载并运行.OCD Base_Moving">
     <configuration name="Base_Moving.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Base_Moving" TARGET_NAME="Base_Moving.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Base_Moving" RUN_TARGET_NAME="Base_Moving.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -183,8 +163,19 @@
       <workItem from="1653560621894" duration="10182000" />
       <workItem from="1654758275342" duration="4619000" />
       <workItem from="1654846980948" duration="338000" />
-      <workItem from="1654847598397" duration="11719000" />
+      <workItem from="1654847598397" duration="12358000" />
+      <workItem from="1654929569135" duration="5940000" />
+      <workItem from="1655072230806" duration="564000" />
+      <workItem from="1655258591638" duration="9032000" />
     </task>
+    <task id="LOCAL-00001" summary="Location Fixed Function added&#10;Bug fixed">
+      <created>1654918599964</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654918599965</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,5 +191,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Location Fixed Function added&#10;Bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Location Fixed Function added&#10;Bug fixed" />
   </component>
 </project>

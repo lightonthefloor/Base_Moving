@@ -768,6 +768,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
  .text.CAN_CMD_Voltage
                 0x0000000000000000       0x4c CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
+ .text.CAN_Recieved_Data_Dealer
+                0x0000000000000000       0x10 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
  .bss.cnt       0x0000000000000000        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
@@ -777,9 +779,15 @@ Discarded input sections
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
+ .text.Gyro_Mode_Drive
+                0x0000000000000000       0xc4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+ .text.Navi_PID_Calculate
+                0x0000000000000000       0x92 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+ .text.Point_Navi_Move
+                0x0000000000000000       0xc0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
@@ -805,6 +813,28 @@ Discarded input sections
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Arm_Task_Send
+                0x0000000000000000       0x58 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Rough_Deadbond
+                0x0000000000000000       0x28 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Precise_Deadbond
+                0x0000000000000000       0x24 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.High_Speed
+                0x0000000000000000       0x18 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Medium_Speed
+                0x0000000000000000       0x18 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Point_Running_Task
+                0x0000000000000000      0x100 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.Wait_Task
+                0x0000000000000000       0x74 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .text.main_task
+                0x0000000000000000      0x2e8 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .bss.Now_Pos_X
+                0x0000000000000000        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .bss.Now_Pos_Y
+                0x0000000000000000        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .bss.Start_Fixed
+                0x0000000000000000        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
  .text          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
@@ -1295,7 +1325,7 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x00000000080001c0     0xb934
+.text           0x00000000080001c0     0xb444
                 0x00000000080001c0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080001c0       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
@@ -1535,643 +1565,615 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .text.CAN2_Filter_Init
                 0x0000000008002f08       0x58 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
                 0x0000000008002f08                CAN2_Filter_Init
- .text.CAN_Recieved_Data_Dealer
-                0x0000000008002f60       0x10 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
-                0x0000000008002f60                CAN_Recieved_Data_Dealer
  .text.HAL_CAN_RxFifo0MsgPendingCallback
-                0x0000000008002f70       0xcc CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
-                0x0000000008002f70                HAL_CAN_RxFifo0MsgPendingCallback
+                0x0000000008002f60       0xcc CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
+                0x0000000008002f60                HAL_CAN_RxFifo0MsgPendingCallback
  .text.Locator_init
-                0x000000000800303c       0x68 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x000000000800303c                Locator_init
+                0x000000000800302c       0x68 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x000000000800302c                Locator_init
  .text.Locator_Rx_Init
-                0x00000000080030a4       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x00000000080030a4                Locator_Rx_Init
+                0x0000000008003094       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000008003094                Locator_Rx_Init
  .text.Locator_Data_Dealer
-                0x00000000080030b8      0x154 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x00000000080030b8                Locator_Data_Dealer
+                0x00000000080030a8      0x178 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x00000000080030a8                Locator_Data_Dealer
  .text.USART1_IRQHandler
-                0x000000000800320c       0xdc CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x000000000800320c                USART1_IRQHandler
+                0x0000000008003220       0xdc CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000008003220                USART1_IRQHandler
  .text.MecanumChassis_OmniDrive
-                0x00000000080032e8       0xc4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
-                0x00000000080032e8                MecanumChassis_OmniDrive
- .text.Gyro_Mode_Drive
-                0x00000000080033ac       0xc4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
-                0x00000000080033ac                Gyro_Mode_Drive
+                0x00000000080032fc       0xc4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
+                0x00000000080032fc                MecanumChassis_OmniDrive
  .text.X_PID_Init
-                0x0000000008003470       0x40 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x0000000008003470                X_PID_Init
+                0x00000000080033c0       0x40 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x00000000080033c0                X_PID_Init
  .text.Y_PID_Init
-                0x00000000080034b0       0x40 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x00000000080034b0                Y_PID_Init
+                0x0000000008003400       0x40 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000008003400                Y_PID_Init
  .text.Angle_PID_Init
-                0x00000000080034f0       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x00000000080034f0                Angle_PID_Init
- .text.Navi_PID_Calculate
-                0x0000000008003528       0x92 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x0000000008003528                Navi_PID_Calculate
- *fill*         0x00000000080035ba        0x2 
- .text.Point_Navi_Move
-                0x00000000080035bc       0xc0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x00000000080035bc                Point_Navi_Move
+                0x0000000008003440       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000008003440                Angle_PID_Init
  .text.Navi_Control_Init
-                0x000000000800367c       0x10 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x000000000800367c                Navi_Control_Init
+                0x0000000008003478       0x10 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000008003478                Navi_Control_Init
  .text.M3508_Speed_Control_Init
-                0x000000000800368c       0x44 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x000000000800368c                M3508_Speed_Control_Init
+                0x0000000008003488       0x44 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x0000000008003488                M3508_Speed_Control_Init
  .text.PID_Calculate
-                0x00000000080036d0      0x118 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x00000000080036d0                PID_Calculate
+                0x00000000080034cc      0x118 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x00000000080034cc                PID_Calculate
  .text.Base_Speed_Calculation
-                0x00000000080037e8       0x64 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x00000000080037e8                Base_Speed_Calculation
+                0x00000000080035e4       0x64 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x00000000080035e4                Base_Speed_Calculation
  .text.Base_Control_Init
-                0x000000000800384c       0x18 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x000000000800384c                Base_Control_Init
- .text.RC_init  0x0000000008003864       0x68 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x0000000008003864                RC_init
+                0x0000000008003648       0x18 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x0000000008003648                Base_Control_Init
+ .text.RC_init  0x0000000008003660       0x68 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x0000000008003660                RC_init
  .text.Remote_Controller_Init
-                0x00000000080038cc       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x00000000080038cc                Remote_Controller_Init
+                0x00000000080036c8       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x00000000080036c8                Remote_Controller_Init
  .text.Data_Dealer
-                0x00000000080038e0       0xe0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x00000000080038e0                Data_Dealer
+                0x00000000080036dc       0xe0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x00000000080036dc                Data_Dealer
  .text.USART3_IRQHandler
-                0x00000000080039c0       0xe4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x00000000080039c0                USART3_IRQHandler
+                0x00000000080037bc       0xe4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x00000000080037bc                USART3_IRQHandler
  .text.Remote_Moving_Control
-                0x0000000008003aa4      0x110 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x0000000008003aa4                Remote_Moving_Control
+                0x00000000080038a0      0x148 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x00000000080038a0                Remote_Moving_Control
  .text.Usart1_TX_DMA_Init
-                0x0000000008003bb4       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
-                0x0000000008003bb4                Usart1_TX_DMA_Init
+                0x00000000080039e8       0x14 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+                0x00000000080039e8                Usart1_TX_DMA_Init
  .text.usart1_tx_dma_enable
-                0x0000000008003bc8       0xd8 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
-                0x0000000008003bc8                usart1_tx_dma_enable
+                0x00000000080039fc       0xd8 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+                0x00000000080039fc                usart1_tx_dma_enable
  .text.Usart_Printf
-                0x0000000008003ca0       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
-                0x0000000008003ca0                Usart_Printf
+                0x0000000008003ad4       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+                0x0000000008003ad4                Usart_Printf
  .text.MX_CAN1_Init
-                0x0000000008003cd8       0x40 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
-                0x0000000008003cd8                MX_CAN1_Init
+                0x0000000008003b0c       0x40 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+                0x0000000008003b0c                MX_CAN1_Init
  .text.MX_CAN2_Init
-                0x0000000008003d18       0x40 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
-                0x0000000008003d18                MX_CAN2_Init
+                0x0000000008003b4c       0x40 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+                0x0000000008003b4c                MX_CAN2_Init
  .text.HAL_CAN_MspInit
-                0x0000000008003d58      0x120 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
-                0x0000000008003d58                HAL_CAN_MspInit
+                0x0000000008003b8c      0x120 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+                0x0000000008003b8c                HAL_CAN_MspInit
  .text.MX_DMA_Init
-                0x0000000008003e78       0x68 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
-                0x0000000008003e78                MX_DMA_Init
+                0x0000000008003cac       0x68 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
+                0x0000000008003cac                MX_DMA_Init
  .text.MX_GPIO_Init
-                0x0000000008003ee0       0xcc CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
-                0x0000000008003ee0                MX_GPIO_Init
- .text.Rough_Deadbond
-                0x0000000008003fac       0x24 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008003fac                Rough_Deadbond
- .text.Precise_Deadbond
-                0x0000000008003fd0       0x28 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008003fd0                Precise_Deadbond
- .text.High_Speed
-                0x0000000008003ff8       0x18 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008003ff8                High_Speed
- .text.Medium_Speed
-                0x0000000008004010       0x18 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008004010                Medium_Speed
- .text.Point_Running_Task
-                0x0000000008004028       0x98 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008004028                Point_Running_Task
- .text.Wait_Task
-                0x00000000080040c0       0x5c CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x00000000080040c0                Wait_Task
+                0x0000000008003d14       0xcc CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
+                0x0000000008003d14                MX_GPIO_Init
+ .text.CAN_Recieved_Data_Dealer
+                0x0000000008003de0       0x38 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000008003de0                CAN_Recieved_Data_Dealer
  .text.Error_Handler
-                0x000000000800411c        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x000000000800411c                Error_Handler
+                0x0000000008003e18        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000008003e18                Error_Handler
  .text.SystemClock_Config
-                0x0000000008004120       0xa8 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x0000000008004120                SystemClock_Config
- .text.main     0x00000000080041c8      0x28c CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                0x00000000080041c8                main
+                0x0000000008003e1c       0xa8 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000008003e1c                SystemClock_Config
+ .text.main     0x0000000008003ec4       0xa0 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000008003ec4                main
  .text.HAL_MspInit
-                0x0000000008004454       0x38 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
-                0x0000000008004454                HAL_MspInit
+                0x0000000008003f64       0x38 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+                0x0000000008003f64                HAL_MspInit
  .text.NMI_Handler
-                0x000000000800448c        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x000000000800448c                NMI_Handler
+                0x0000000008003f9c        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003f9c                NMI_Handler
  .text.HardFault_Handler
-                0x000000000800448e        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x000000000800448e                HardFault_Handler
+                0x0000000008003f9e        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003f9e                HardFault_Handler
  .text.MemManage_Handler
-                0x0000000008004490        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x0000000008004490                MemManage_Handler
+                0x0000000008003fa0        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fa0                MemManage_Handler
  .text.BusFault_Handler
-                0x0000000008004492        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x0000000008004492                BusFault_Handler
+                0x0000000008003fa2        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fa2                BusFault_Handler
  .text.UsageFault_Handler
-                0x0000000008004494        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x0000000008004494                UsageFault_Handler
+                0x0000000008003fa4        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fa4                UsageFault_Handler
  .text.SVC_Handler
-                0x0000000008004496        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x0000000008004496                SVC_Handler
+                0x0000000008003fa6        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fa6                SVC_Handler
  .text.DebugMon_Handler
-                0x0000000008004498        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x0000000008004498                DebugMon_Handler
+                0x0000000008003fa8        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fa8                DebugMon_Handler
  .text.PendSV_Handler
-                0x000000000800449a        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x000000000800449a                PendSV_Handler
+                0x0000000008003faa        0x2 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003faa                PendSV_Handler
  .text.SysTick_Handler
-                0x000000000800449c        0x8 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x000000000800449c                SysTick_Handler
+                0x0000000008003fac        0x8 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fac                SysTick_Handler
  .text.DMA1_Stream1_IRQHandler
-                0x00000000080044a4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x00000000080044a4                DMA1_Stream1_IRQHandler
+                0x0000000008003fb4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fb4                DMA1_Stream1_IRQHandler
  .text.CAN1_RX0_IRQHandler
-                0x00000000080044b4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x00000000080044b4                CAN1_RX0_IRQHandler
+                0x0000000008003fc4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fc4                CAN1_RX0_IRQHandler
  .text.DMA2_Stream2_IRQHandler
-                0x00000000080044c4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x00000000080044c4                DMA2_Stream2_IRQHandler
+                0x0000000008003fd4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fd4                DMA2_Stream2_IRQHandler
  .text.CAN2_RX0_IRQHandler
-                0x00000000080044d4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x00000000080044d4                CAN2_RX0_IRQHandler
+                0x0000000008003fe4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003fe4                CAN2_RX0_IRQHandler
  .text.DMA2_Stream7_IRQHandler
-                0x00000000080044e4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
-                0x00000000080044e4                DMA2_Stream7_IRQHandler
- .text._getpid  0x00000000080044f4        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x00000000080044f4                _getpid
- .text._kill    0x00000000080044f8       0x10 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x00000000080044f8                _kill
- .text._exit    0x0000000008004508        0xc CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x0000000008004508                _exit
- .text._read    0x0000000008004514       0x20 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x0000000008004514                _read
- .text._write   0x0000000008004534       0x1c CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x0000000008004534                _write
- .text._sbrk    0x0000000008004550       0x3c CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x0000000008004550                _sbrk
- .text._close   0x000000000800458c        0x6 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x000000000800458c                _close
- .text._fstat   0x0000000008004592        0xa CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x0000000008004592                _fstat
- .text._isatty  0x000000000800459c        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x000000000800459c                _isatty
- .text._lseek   0x00000000080045a0        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
-                0x00000000080045a0                _lseek
+                0x0000000008003ff4       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x0000000008003ff4                DMA2_Stream7_IRQHandler
+ .text._getpid  0x0000000008004004        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004004                _getpid
+ .text._kill    0x0000000008004008       0x10 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004008                _kill
+ .text._exit    0x0000000008004018        0xc CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004018                _exit
+ .text._read    0x0000000008004024       0x20 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004024                _read
+ .text._write   0x0000000008004044       0x1c CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004044                _write
+ .text._sbrk    0x0000000008004060       0x3c CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000008004060                _sbrk
+ .text._close   0x000000000800409c        0x6 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x000000000800409c                _close
+ .text._fstat   0x00000000080040a2        0xa CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x00000000080040a2                _fstat
+ .text._isatty  0x00000000080040ac        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x00000000080040ac                _isatty
+ .text._lseek   0x00000000080040b0        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x00000000080040b0                _lseek
  .text.SystemInit
-                0x00000000080045a4        0x2 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
-                0x00000000080045a4                SystemInit
- *fill*         0x00000000080045a6        0x2 
+                0x00000000080040b4        0x2 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+                0x00000000080040b4                SystemInit
+ *fill*         0x00000000080040b6        0x2 
  .text.MX_USART1_UART_Init
-                0x00000000080045a8       0x34 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x00000000080045a8                MX_USART1_UART_Init
+                0x00000000080040b8       0x34 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x00000000080040b8                MX_USART1_UART_Init
  .text.MX_USART3_UART_Init
-                0x00000000080045dc       0x38 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x00000000080045dc                MX_USART3_UART_Init
+                0x00000000080040ec       0x38 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x00000000080040ec                MX_USART3_UART_Init
  .text.HAL_UART_MspInit
-                0x0000000008004614      0x1e0 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x0000000008004614                HAL_UART_MspInit
+                0x0000000008004124      0x1e0 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x0000000008004124                HAL_UART_MspInit
  .text.Reset_Handler
-                0x00000000080047f4       0x50 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
-                0x00000000080047f4                Reset_Handler
+                0x0000000008004304       0x50 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+                0x0000000008004304                Reset_Handler
  .text.Default_Handler
-                0x0000000008004844        0x2 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
-                0x0000000008004844                DMA1_Stream3_IRQHandler
-                0x0000000008004844                HASH_RNG_IRQHandler
-                0x0000000008004844                EXTI2_IRQHandler
-                0x0000000008004844                TIM8_CC_IRQHandler
-                0x0000000008004844                TIM1_CC_IRQHandler
-                0x0000000008004844                DMA2_Stream5_IRQHandler
-                0x0000000008004844                DMA1_Stream5_IRQHandler
-                0x0000000008004844                PVD_IRQHandler
-                0x0000000008004844                SDIO_IRQHandler
-                0x0000000008004844                TAMP_STAMP_IRQHandler
-                0x0000000008004844                CAN2_RX1_IRQHandler
-                0x0000000008004844                EXTI3_IRQHandler
-                0x0000000008004844                TIM8_TRG_COM_TIM14_IRQHandler
-                0x0000000008004844                TIM1_UP_TIM10_IRQHandler
-                0x0000000008004844                TIM8_UP_TIM13_IRQHandler
-                0x0000000008004844                I2C3_ER_IRQHandler
-                0x0000000008004844                EXTI0_IRQHandler
-                0x0000000008004844                I2C2_EV_IRQHandler
-                0x0000000008004844                DMA1_Stream2_IRQHandler
-                0x0000000008004844                FPU_IRQHandler
-                0x0000000008004844                OTG_HS_WKUP_IRQHandler
-                0x0000000008004844                CAN2_SCE_IRQHandler
-                0x0000000008004844                SPI1_IRQHandler
-                0x0000000008004844                TIM6_DAC_IRQHandler
-                0x0000000008004844                TIM1_BRK_TIM9_IRQHandler
-                0x0000000008004844                DCMI_IRQHandler
-                0x0000000008004844                DMA2_Stream3_IRQHandler
-                0x0000000008004844                USART6_IRQHandler
-                0x0000000008004844                CAN1_RX1_IRQHandler
-                0x0000000008004844                UART5_IRQHandler
-                0x0000000008004844                DMA2_Stream0_IRQHandler
-                0x0000000008004844                TIM4_IRQHandler
-                0x0000000008004844                I2C1_EV_IRQHandler
-                0x0000000008004844                DMA1_Stream6_IRQHandler
-                0x0000000008004844                UART4_IRQHandler
-                0x0000000008004844                TIM3_IRQHandler
-                0x0000000008004844                RCC_IRQHandler
-                0x0000000008004844                TIM8_BRK_TIM12_IRQHandler
-                0x0000000008004844                Default_Handler
-                0x0000000008004844                EXTI15_10_IRQHandler
-                0x0000000008004844                ADC_IRQHandler
-                0x0000000008004844                DMA1_Stream7_IRQHandler
-                0x0000000008004844                TIM7_IRQHandler
-                0x0000000008004844                CAN2_TX_IRQHandler
-                0x0000000008004844                TIM5_IRQHandler
-                0x0000000008004844                I2C3_EV_IRQHandler
-                0x0000000008004844                EXTI9_5_IRQHandler
-                0x0000000008004844                RTC_WKUP_IRQHandler
-                0x0000000008004844                ETH_WKUP_IRQHandler
-                0x0000000008004844                SPI2_IRQHandler
-                0x0000000008004844                OTG_HS_EP1_IN_IRQHandler
-                0x0000000008004844                DMA1_Stream0_IRQHandler
-                0x0000000008004844                CAN1_TX_IRQHandler
-                0x0000000008004844                EXTI4_IRQHandler
-                0x0000000008004844                FSMC_IRQHandler
-                0x0000000008004844                ETH_IRQHandler
-                0x0000000008004844                OTG_HS_EP1_OUT_IRQHandler
-                0x0000000008004844                WWDG_IRQHandler
-                0x0000000008004844                TIM2_IRQHandler
-                0x0000000008004844                OTG_FS_WKUP_IRQHandler
-                0x0000000008004844                TIM1_TRG_COM_TIM11_IRQHandler
-                0x0000000008004844                OTG_HS_IRQHandler
-                0x0000000008004844                EXTI1_IRQHandler
-                0x0000000008004844                USART2_IRQHandler
-                0x0000000008004844                I2C2_ER_IRQHandler
-                0x0000000008004844                DMA2_Stream1_IRQHandler
-                0x0000000008004844                CAN1_SCE_IRQHandler
-                0x0000000008004844                FLASH_IRQHandler
-                0x0000000008004844                DMA2_Stream4_IRQHandler
-                0x0000000008004844                OTG_FS_IRQHandler
-                0x0000000008004844                SPI3_IRQHandler
-                0x0000000008004844                DMA1_Stream4_IRQHandler
-                0x0000000008004844                I2C1_ER_IRQHandler
-                0x0000000008004844                DMA2_Stream6_IRQHandler
-                0x0000000008004844                RTC_Alarm_IRQHandler
- *fill*         0x0000000008004846        0x2 
- .text.__errno  0x0000000008004848        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-errno.o)
-                0x0000000008004848                __errno
+                0x0000000008004354        0x2 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+                0x0000000008004354                DMA1_Stream3_IRQHandler
+                0x0000000008004354                HASH_RNG_IRQHandler
+                0x0000000008004354                EXTI2_IRQHandler
+                0x0000000008004354                TIM8_CC_IRQHandler
+                0x0000000008004354                TIM1_CC_IRQHandler
+                0x0000000008004354                DMA2_Stream5_IRQHandler
+                0x0000000008004354                DMA1_Stream5_IRQHandler
+                0x0000000008004354                PVD_IRQHandler
+                0x0000000008004354                SDIO_IRQHandler
+                0x0000000008004354                TAMP_STAMP_IRQHandler
+                0x0000000008004354                CAN2_RX1_IRQHandler
+                0x0000000008004354                EXTI3_IRQHandler
+                0x0000000008004354                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0000000008004354                TIM1_UP_TIM10_IRQHandler
+                0x0000000008004354                TIM8_UP_TIM13_IRQHandler
+                0x0000000008004354                I2C3_ER_IRQHandler
+                0x0000000008004354                EXTI0_IRQHandler
+                0x0000000008004354                I2C2_EV_IRQHandler
+                0x0000000008004354                DMA1_Stream2_IRQHandler
+                0x0000000008004354                FPU_IRQHandler
+                0x0000000008004354                OTG_HS_WKUP_IRQHandler
+                0x0000000008004354                CAN2_SCE_IRQHandler
+                0x0000000008004354                SPI1_IRQHandler
+                0x0000000008004354                TIM6_DAC_IRQHandler
+                0x0000000008004354                TIM1_BRK_TIM9_IRQHandler
+                0x0000000008004354                DCMI_IRQHandler
+                0x0000000008004354                DMA2_Stream3_IRQHandler
+                0x0000000008004354                USART6_IRQHandler
+                0x0000000008004354                CAN1_RX1_IRQHandler
+                0x0000000008004354                UART5_IRQHandler
+                0x0000000008004354                DMA2_Stream0_IRQHandler
+                0x0000000008004354                TIM4_IRQHandler
+                0x0000000008004354                I2C1_EV_IRQHandler
+                0x0000000008004354                DMA1_Stream6_IRQHandler
+                0x0000000008004354                UART4_IRQHandler
+                0x0000000008004354                TIM3_IRQHandler
+                0x0000000008004354                RCC_IRQHandler
+                0x0000000008004354                TIM8_BRK_TIM12_IRQHandler
+                0x0000000008004354                Default_Handler
+                0x0000000008004354                EXTI15_10_IRQHandler
+                0x0000000008004354                ADC_IRQHandler
+                0x0000000008004354                DMA1_Stream7_IRQHandler
+                0x0000000008004354                TIM7_IRQHandler
+                0x0000000008004354                CAN2_TX_IRQHandler
+                0x0000000008004354                TIM5_IRQHandler
+                0x0000000008004354                I2C3_EV_IRQHandler
+                0x0000000008004354                EXTI9_5_IRQHandler
+                0x0000000008004354                RTC_WKUP_IRQHandler
+                0x0000000008004354                ETH_WKUP_IRQHandler
+                0x0000000008004354                SPI2_IRQHandler
+                0x0000000008004354                OTG_HS_EP1_IN_IRQHandler
+                0x0000000008004354                DMA1_Stream0_IRQHandler
+                0x0000000008004354                CAN1_TX_IRQHandler
+                0x0000000008004354                EXTI4_IRQHandler
+                0x0000000008004354                FSMC_IRQHandler
+                0x0000000008004354                ETH_IRQHandler
+                0x0000000008004354                OTG_HS_EP1_OUT_IRQHandler
+                0x0000000008004354                WWDG_IRQHandler
+                0x0000000008004354                TIM2_IRQHandler
+                0x0000000008004354                OTG_FS_WKUP_IRQHandler
+                0x0000000008004354                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0000000008004354                OTG_HS_IRQHandler
+                0x0000000008004354                EXTI1_IRQHandler
+                0x0000000008004354                USART2_IRQHandler
+                0x0000000008004354                I2C2_ER_IRQHandler
+                0x0000000008004354                DMA2_Stream1_IRQHandler
+                0x0000000008004354                CAN1_SCE_IRQHandler
+                0x0000000008004354                FLASH_IRQHandler
+                0x0000000008004354                DMA2_Stream4_IRQHandler
+                0x0000000008004354                OTG_FS_IRQHandler
+                0x0000000008004354                SPI3_IRQHandler
+                0x0000000008004354                DMA1_Stream4_IRQHandler
+                0x0000000008004354                I2C1_ER_IRQHandler
+                0x0000000008004354                DMA2_Stream6_IRQHandler
+                0x0000000008004354                RTC_Alarm_IRQHandler
+ *fill*         0x0000000008004356        0x2 
+ .text.__errno  0x0000000008004358        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-errno.o)
+                0x0000000008004358                __errno
  .text.__libc_init_array
-                0x0000000008004854       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-init.o)
-                0x0000000008004854                __libc_init_array
- .text.memset   0x000000000800489c       0xa4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
-                0x000000000800489c                memset
+                0x0000000008004364       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-init.o)
+                0x0000000008004364                __libc_init_array
+ .text.memset   0x00000000080043ac       0xa4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
+                0x00000000080043ac                memset
  .text.vsprintf
-                0x0000000008004940       0x38 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vsprintf.o)
-                0x0000000008004940                vsprintf
+                0x0000000008004450       0x38 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vsprintf.o)
+                0x0000000008004450                vsprintf
  .text.startup.register_fini
-                0x0000000008004978       0x14 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
- .text.atexit   0x000000000800498c        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-atexit.o)
-                0x000000000800498c                atexit
+                0x0000000008004488       0x14 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
+ .text.atexit   0x000000000800449c        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-atexit.o)
+                0x000000000800449c                atexit
  .text.__libc_fini_array
-                0x0000000008004998       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fini.o)
-                0x0000000008004998                __libc_fini_array
+                0x00000000080044a8       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fini.o)
+                0x00000000080044a8                __libc_fini_array
  .text.__retarget_lock_init_recursive
-                0x00000000080049c4        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x00000000080049c4                __retarget_lock_init_recursive
+                0x00000000080044d4        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x00000000080044d4                __retarget_lock_init_recursive
  .text.__retarget_lock_close_recursive
-                0x00000000080049c8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x00000000080049c8                __retarget_lock_close_recursive
+                0x00000000080044d8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x00000000080044d8                __retarget_lock_close_recursive
  .text.__retarget_lock_acquire_recursive
-                0x00000000080049cc        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x00000000080049cc                __retarget_lock_acquire_recursive
+                0x00000000080044dc        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x00000000080044dc                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x00000000080049d0        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x00000000080049d0                __retarget_lock_release_recursive
+                0x00000000080044e0        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x00000000080044e0                __retarget_lock_release_recursive
  .text._svfprintf_r
-                0x00000000080049d4     0x1a3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
-                0x00000000080049d4                _svfprintf_r
+                0x00000000080044e4     0x1a3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
+                0x00000000080044e4                _svfprintf_r
  .text.__register_exitproc
-                0x0000000008006410       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__atexit.o)
-                0x0000000008006410                __register_exitproc
- .text.quorem   0x000000000800649c      0x124 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
- .text._dtoa_r  0x00000000080065c0      0xec4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
-                0x00000000080065c0                _dtoa_r
+                0x0000000008005f20       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__atexit.o)
+                0x0000000008005f20                __register_exitproc
+ .text.quorem   0x0000000008005fac      0x124 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x00000000080060d0      0xec4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
+                0x00000000080060d0                _dtoa_r
  .text._malloc_trim_r
-                0x0000000008007484       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
-                0x0000000008007484                _malloc_trim_r
- .text._free_r  0x0000000008007524      0x20c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
-                0x0000000008007524                _free_r
+                0x0000000008006f94       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
+                0x0000000008006f94                _malloc_trim_r
+ .text._free_r  0x0000000008007034      0x20c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
+                0x0000000008007034                _free_r
  .text._localeconv_r
-                0x0000000008007730        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
-                0x0000000008007730                _localeconv_r
+                0x0000000008007240        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
+                0x0000000008007240                _localeconv_r
  .text._malloc_r
-                0x0000000008007738      0x560 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
-                0x0000000008007738                _malloc_r
+                0x0000000008007248      0x560 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+                0x0000000008007248                _malloc_r
  .text.__malloc_lock
-                0x0000000008007c98        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
-                0x0000000008007c98                __malloc_lock
+                0x00000000080077a8        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
+                0x00000000080077a8                __malloc_lock
  .text.__malloc_unlock
-                0x0000000008007ca4        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
-                0x0000000008007ca4                __malloc_unlock
- .text._Balloc  0x0000000008007cb0       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007cb0                _Balloc
- .text._Bfree   0x0000000008007cfc       0x14 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007cfc                _Bfree
+                0x00000000080077b4        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
+                0x00000000080077b4                __malloc_unlock
+ .text._Balloc  0x00000000080077c0       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x00000000080077c0                _Balloc
+ .text._Bfree   0x000000000800780c       0x14 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800780c                _Bfree
  .text.__multadd
-                0x0000000008007d10       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007d10                __multadd
+                0x0000000008007820       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007820                __multadd
  .text.__hi0bits
-                0x0000000008007db0       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007db0                __hi0bits
+                0x00000000080078c0       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x00000000080078c0                __hi0bits
  .text.__lo0bits
-                0x0000000008007df0       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007df0                __lo0bits
- .text.__i2b    0x0000000008007e4c       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007e4c                __i2b
+                0x0000000008007900       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007900                __lo0bits
+ .text.__i2b    0x000000000800795c       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800795c                __i2b
  .text.__multiply
-                0x0000000008007ea8      0x15c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008007ea8                __multiply
+                0x00000000080079b8      0x15c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x00000000080079b8                __multiply
  .text.__pow5mult
-                0x0000000008008004       0xc0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008008004                __pow5mult
+                0x0000000008007b14       0xc0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007b14                __pow5mult
  .text.__lshift
-                0x00000000080080c4       0xf0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x00000000080080c4                __lshift
- .text.__mcmp   0x00000000080081b4       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x00000000080081b4                __mcmp
- .text.__mdiff  0x00000000080081f4      0x14c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x00000000080081f4                __mdiff
- .text.__d2b    0x0000000008008340       0xc4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x0000000008008340                __d2b
- .text.frexp    0x0000000008008404       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-s_frexp.o)
-                0x0000000008008404                frexp
- .text._sbrk_r  0x0000000008008474       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
-                0x0000000008008474                _sbrk_r
- .text.strncpy  0x0000000008008498       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
-                0x0000000008008498                strncpy
+                0x0000000008007bd4       0xf0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007bd4                __lshift
+ .text.__mcmp   0x0000000008007cc4       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007cc4                __mcmp
+ .text.__mdiff  0x0000000008007d04      0x14c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007d04                __mdiff
+ .text.__d2b    0x0000000008007e50       0xc4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x0000000008007e50                __d2b
+ .text.frexp    0x0000000008007f14       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-s_frexp.o)
+                0x0000000008007f14                frexp
+ .text._sbrk_r  0x0000000008007f84       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
+                0x0000000008007f84                _sbrk_r
+ .text.strncpy  0x0000000008007fa8       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
+                0x0000000008007fa8                strncpy
  .text.__ssprint_r
-                0x00000000080084fc       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfiprintf.o)
-                0x00000000080084fc                __ssprint_r
+                0x000000000800800c       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfiprintf.o)
+                0x000000000800800c                __ssprint_r
  .text.__assert_func
-                0x00000000080085f4       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
-                0x00000000080085f4                __assert_func
+                0x0000000008008104       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
+                0x0000000008008104                __assert_func
  .text._calloc_r
-                0x0000000008008634       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-callocr.o)
-                0x0000000008008634                _calloc_r
+                0x0000000008008144       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-callocr.o)
+                0x0000000008008144                _calloc_r
  .text.fiprintf
-                0x00000000080086ac       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
-                0x00000000080086ac                fiprintf
+                0x00000000080081bc       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
+                0x00000000080081bc                fiprintf
  .text.__locale_mb_cur_max
-                0x00000000080086d4        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
-                0x00000000080086d4                __locale_mb_cur_max
+                0x00000000080081e4        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
+                0x00000000080081e4                __locale_mb_cur_max
  .text.__ascii_mbtowc
-                0x00000000080086e0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
-                0x00000000080086e0                __ascii_mbtowc
- .text.memmove  0x000000000800870c       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
-                0x000000000800870c                memmove
+                0x00000000080081f0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
+                0x00000000080081f0                __ascii_mbtowc
+ .text.memmove  0x000000000800821c       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
+                0x000000000800821c                memmove
  .text._realloc_r
-                0x0000000008008804      0x3d8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
-                0x0000000008008804                _realloc_r
+                0x0000000008008314      0x3d8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
+                0x0000000008008314                _realloc_r
  .text.__sprint_r.part.0
-                0x0000000008008bdc       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+                0x00000000080086ec       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
  .text._vfiprintf_r
-                0x0000000008008c54      0xda0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
-                0x0000000008008c54                _vfiprintf_r
+                0x0000000008008764      0xda0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+                0x0000000008008764                _vfiprintf_r
  .text.__sbprintf
-                0x00000000080099f4       0x80 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+                0x0000000008009504       0x80 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
  .text.__ascii_wctomb
-                0x0000000008009a74       0x1c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
-                0x0000000008009a74                __ascii_wctomb
+                0x0000000008009584       0x1c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
+                0x0000000008009584                __ascii_wctomb
  .text.__swsetup_r
-                0x0000000008009a90       0xd4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
-                0x0000000008009a90                __swsetup_r
- .text.abort    0x0000000008009b64       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
-                0x0000000008009b64                abort
+                0x00000000080095a0       0xd4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
+                0x00000000080095a0                __swsetup_r
+ .text.abort    0x0000000008009674       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
+                0x0000000008009674                abort
  .text.__sflush_r
-                0x0000000008009b74      0x120 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
-                0x0000000008009b74                __sflush_r
+                0x0000000008009684      0x120 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
+                0x0000000008009684                __sflush_r
  .text._fflush_r
-                0x0000000008009c94       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
-                0x0000000008009c94                _fflush_r
+                0x00000000080097a4       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
+                0x00000000080097a4                _fflush_r
  .text._cleanup_r
-                0x0000000008009cf0        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
-                0x0000000008009cf0                _cleanup_r
- .text.__sinit  0x0000000008009cfc      0x10c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
-                0x0000000008009cfc                __sinit
+                0x0000000008009800        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+                0x0000000008009800                _cleanup_r
+ .text.__sinit  0x000000000800980c      0x10c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+                0x000000000800980c                __sinit
  .text.__sfp_lock_acquire
-                0x0000000008009e08        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
-                0x0000000008009e08                __sfp_lock_acquire
+                0x0000000008009918        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+                0x0000000008009918                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x0000000008009e14        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
-                0x0000000008009e14                __sfp_lock_release
+                0x0000000008009924        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+                0x0000000008009924                __sfp_lock_release
  .text.__fputwc
-                0x0000000008009e20       0xa8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
-                0x0000000008009e20                __fputwc
+                0x0000000008009930       0xa8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
+                0x0000000008009930                __fputwc
  .text._fputwc_r
-                0x0000000008009ec8       0x68 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
-                0x0000000008009ec8                _fputwc_r
+                0x00000000080099d8       0x68 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
+                0x00000000080099d8                _fputwc_r
  .text.__sfvwrite_r
-                0x0000000008009f30      0x2e8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
-                0x0000000008009f30                __sfvwrite_r
+                0x0000000008009a40      0x2e8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
+                0x0000000008009a40                __sfvwrite_r
  .text._fwalk_reent
-                0x000000000800a218       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
-                0x000000000800a218                _fwalk_reent
+                0x0000000008009d28       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
+                0x0000000008009d28                _fwalk_reent
  .text.__smakebuf_r
-                0x000000000800a260       0xe0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
-                0x000000000800a260                __smakebuf_r
- .text.raise    0x000000000800a340       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
-                0x000000000800a340                raise
- .text._kill_r  0x000000000800a39c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
-                0x000000000800a39c                _kill_r
+                0x0000000008009d70       0xe0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
+                0x0000000008009d70                __smakebuf_r
+ .text.raise    0x0000000008009e50       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
+                0x0000000008009e50                raise
+ .text._kill_r  0x0000000008009eac       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
+                0x0000000008009eac                _kill_r
  .text._getpid_r
-                0x000000000800a3c8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
-                0x000000000800a3c8                _getpid_r
- .text.__sread  0x000000000800a3cc       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
-                0x000000000800a3cc                __sread
+                0x0000000008009ed8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
+                0x0000000008009ed8                _getpid_r
+ .text.__sread  0x0000000008009edc       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+                0x0000000008009edc                __sread
  .text.__swrite
-                0x000000000800a3f0       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
-                0x000000000800a3f0                __swrite
- .text.__sseek  0x000000000800a430       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
-                0x000000000800a430                __sseek
+                0x0000000008009f00       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+                0x0000000008009f00                __swrite
+ .text.__sseek  0x0000000008009f40       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+                0x0000000008009f40                __sseek
  .text.__sclose
-                0x000000000800a450        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
-                0x000000000800a450                __sclose
+                0x0000000008009f60        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+                0x0000000008009f60                __sclose
  .text.__swbuf_r
-                0x000000000800a458       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
-                0x000000000800a458                __swbuf_r
+                0x0000000008009f68       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
+                0x0000000008009f68                __swbuf_r
  .text._wcrtomb_r
-                0x000000000800a508       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
-                0x000000000800a508                _wcrtomb_r
+                0x000000000800a018       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
+                0x000000000800a018                _wcrtomb_r
  .text._write_r
-                0x000000000800a544       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
-                0x000000000800a544                _write_r
+                0x000000000800a054       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
+                0x000000000800a054                _write_r
  .text._close_r
-                0x000000000800a570       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
-                0x000000000800a570                _close_r
+                0x000000000800a080       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
+                0x000000000800a080                _close_r
  .text._fclose_r
-                0x000000000800a594       0xcc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
-                0x000000000800a594                _fclose_r
+                0x000000000800a0a4       0xcc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
+                0x000000000800a0a4                _fclose_r
  .text._fstat_r
-                0x000000000800a660       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
-                0x000000000800a660                _fstat_r
+                0x000000000800a170       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
+                0x000000000800a170                _fstat_r
  .text._isatty_r
-                0x000000000800a68c       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
-                0x000000000800a68c                _isatty_r
+                0x000000000800a19c       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
+                0x000000000800a19c                _isatty_r
  .text._lseek_r
-                0x000000000800a6b0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
-                0x000000000800a6b0                _lseek_r
- .text._read_r  0x000000000800a6dc       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
-                0x000000000800a6dc                _read_r
- .text.cos      0x000000000800a708       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_cos.o)
-                0x000000000800a708                cos
- .text.sin      0x000000000800a7a8       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_sin.o)
-                0x000000000800a7a8                sin
+                0x000000000800a1c0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
+                0x000000000800a1c0                _lseek_r
+ .text._read_r  0x000000000800a1ec       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
+                0x000000000800a1ec                _read_r
+ .text.cos      0x000000000800a218       0xa0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_cos.o)
+                0x000000000800a218                cos
+ .text.sin      0x000000000800a2b8       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_sin.o)
+                0x000000000800a2b8                sin
  .text.__ieee754_rem_pio2
-                0x000000000800a858      0x454 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
-                0x000000000800a858                __ieee754_rem_pio2
- *fill*         0x000000000800acac        0x4 
+                0x000000000800a368      0x454 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
+                0x000000000800a368                __ieee754_rem_pio2
+ *fill*         0x000000000800a7bc        0x4 
  .text.__kernel_cos
-                0x000000000800acb0      0x260 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_cos.o)
-                0x000000000800acb0                __kernel_cos
+                0x000000000800a7c0      0x260 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_cos.o)
+                0x000000000800a7c0                __kernel_cos
  .text.__kernel_rem_pio2
-                0x000000000800af10      0x850 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
-                0x000000000800af10                __kernel_rem_pio2
+                0x000000000800aa20      0x850 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
+                0x000000000800aa20                __kernel_rem_pio2
  .text.__kernel_sin
-                0x000000000800b760      0x184 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_sin.o)
-                0x000000000800b760                __kernel_sin
- .text.fabs     0x000000000800b8e4        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_fabs.o)
-                0x000000000800b8e4                fabs
- *fill*         0x000000000800b8ec        0x4 
- .text.floor    0x000000000800b8f0       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_floor.o)
-                0x000000000800b8f0                floor
- .text.scalbn   0x000000000800b9e8       0xf4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_scalbn.o)
-                0x000000000800b9e8                scalbn
+                0x000000000800b270      0x184 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_sin.o)
+                0x000000000800b270                __kernel_sin
+ .text.fabs     0x000000000800b3f4        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_fabs.o)
+                0x000000000800b3f4                fabs
+ *fill*         0x000000000800b3fc        0x4 
+ .text.floor    0x000000000800b400       0xf8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_floor.o)
+                0x000000000800b400                floor
+ .text.scalbn   0x000000000800b4f8       0xf4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-s_scalbn.o)
+                0x000000000800b4f8                scalbn
  *(.glue_7)
- .glue_7        0x000000000800badc        0x0 linker stubs
+ .glue_7        0x000000000800b5ec        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000000000800badc        0x0 linker stubs
+ .glue_7t       0x000000000800b5ec        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x000000000800badc        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .eh_frame      0x000000000800b5ec        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
  *(.init)
- .init          0x000000000800badc        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x000000000800badc                _init
- .init          0x000000000800bae0        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+ .init          0x000000000800b5ec        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x000000000800b5ec                _init
+ .init          0x000000000800b5f0        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
  *(.fini)
- .fini          0x000000000800bae8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x000000000800bae8                _fini
- .fini          0x000000000800baec        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
-                0x000000000800baf4                . = ALIGN (0x4)
-                0x000000000800baf4                _etext = .
+ .fini          0x000000000800b5f8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x000000000800b5f8                _fini
+ .fini          0x000000000800b5fc        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+                0x000000000800b604                . = ALIGN (0x4)
+                0x000000000800b604                _etext = .
 
-.vfp11_veneer   0x000000000800baf4        0x0
- .vfp11_veneer  0x000000000800baf4        0x0 linker stubs
+.vfp11_veneer   0x000000000800b604        0x0
+ .vfp11_veneer  0x000000000800b604        0x0 linker stubs
 
-.v4_bx          0x000000000800baf4        0x0
- .v4_bx         0x000000000800baf4        0x0 linker stubs
+.v4_bx          0x000000000800b604        0x0
+ .v4_bx         0x000000000800b604        0x0 linker stubs
 
-.iplt           0x000000000800baf4        0x0
- .iplt          0x000000000800baf4        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.iplt           0x000000000800b604        0x0
+ .iplt          0x000000000800b604        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.rodata         0x000000000800baf8      0x5b8
-                0x000000000800baf8                . = ALIGN (0x4)
+.rodata         0x000000000800b608      0x5b8
+                0x000000000800b608                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.flagBitshiftOffset.0
-                0x000000000800baf8        0x8 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x000000000800b608        0x8 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .rodata.main.str1.4
-                0x000000000800bb00        0x5 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- *fill*         0x000000000800bb05        0x3 
+                0x000000000800b610        0x5 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ *fill*         0x000000000800b615        0x3 
  .rodata.AHBPrescTable
-                0x000000000800bb08       0x10 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
-                0x000000000800bb08                AHBPrescTable
+                0x000000000800b618       0x10 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+                0x000000000800b618                AHBPrescTable
  .rodata.APBPrescTable
-                0x000000000800bb18        0x8 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
-                0x000000000800bb18                APBPrescTable
+                0x000000000800b628        0x8 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+                0x000000000800b628                APBPrescTable
  .rodata._global_impure_ptr
-                0x000000000800bb20        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-impure.o)
-                0x000000000800bb20                _global_impure_ptr
+                0x000000000800b630        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-impure.o)
+                0x000000000800b630                _global_impure_ptr
  .rodata._svfprintf_r.str1.4
-                0x000000000800bb24       0x42 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
- *fill*         0x000000000800bb66        0x2 
+                0x000000000800b634       0x42 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
+ *fill*         0x000000000800b676        0x2 
  .rodata.blanks.1
-                0x000000000800bb68       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
+                0x000000000800b678       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
  .rodata.zeroes.0
-                0x000000000800bb78       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
+                0x000000000800b688       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
  .rodata._dtoa_r.str1.4
-                0x000000000800bb88       0x7e /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
+                0x000000000800b698       0x7e /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
                                          0x82 (size before relaxing)
- *fill*         0x000000000800bc06        0x2 
+ *fill*         0x000000000800b716        0x2 
  .rodata.__multadd.str1.4
-                0x000000000800bc08       0x5b /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800b718       0x5b /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
                                          0x6f (size before relaxing)
- *fill*         0x000000000800bc63        0x5 
+ *fill*         0x000000000800b773        0x5 
  .rodata.__mprec_bigtens
-                0x000000000800bc68       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x000000000800bc68                __mprec_bigtens
+                0x000000000800b778       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800b778                __mprec_bigtens
  .rodata.__mprec_tens
-                0x000000000800bc90       0xc8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
-                0x000000000800bc90                __mprec_tens
- .rodata.p05.0  0x000000000800bd58        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800b7a0       0xc8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+                0x000000000800b7a0                __mprec_tens
+ .rodata.p05.0  0x000000000800b868        0xc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
  .rodata.__assert_func.str1.4
-                0x000000000800bd64       0x3f /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
+                0x000000000800b874       0x3f /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
                                          0x43 (size before relaxing)
- *fill*         0x000000000800bda3        0x1 
+ *fill*         0x000000000800b8b3        0x1 
  .rodata._setlocale_r.str1.4
-                0x000000000800bda4        0xa /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
+                0x000000000800b8b4        0xa /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
                                           0xd (size before relaxing)
- *fill*         0x000000000800bdae        0x2 
+ *fill*         0x000000000800b8be        0x2 
  .rodata.str1.4
-                0x000000000800bdb0        0x2 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
+                0x000000000800b8c0        0x2 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
  .rodata._vfiprintf_r.str1.4
-                0x000000000800bdb2       0x2f /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
- *fill*         0x000000000800bdb2        0x2 
+                0x000000000800b8c2       0x2f /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+ *fill*         0x000000000800b8c2        0x2 
  .rodata.blanks.1
-                0x000000000800bdb4       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+                0x000000000800b8c4       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
  .rodata.zeroes.0
-                0x000000000800bdc4       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+                0x000000000800b8d4       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
  .rodata._ctype_
-                0x000000000800bdd4      0x101 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-ctype_.o)
-                0x000000000800bdd4                _ctype_
- *fill*         0x000000000800bed5        0x3 
+                0x000000000800b8e4      0x101 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-ctype_.o)
+                0x000000000800b8e4                _ctype_
+ *fill*         0x000000000800b9e5        0x3 
  .rodata.npio2_hw
-                0x000000000800bed8       0x80 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
+                0x000000000800b9e8       0x80 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x000000000800bf58      0x108 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
- .rodata.PIo2   0x000000000800c060       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
+                0x000000000800ba68      0x108 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-e_rem_pio2.o)
+ .rodata.PIo2   0x000000000800bb70       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x000000000800c0a0       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
-                0x000000000800c0b0                . = ALIGN (0x4)
+                0x000000000800bbb0       0x10 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a(lib_a-k_rem_pio2.o)
+                0x000000000800bbc0                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x000000000800c0b0        0x8
-                0x000000000800c0b0                __exidx_start = .
+.ARM            0x000000000800bbc0        0x8
+                0x000000000800bbc0                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x000000000800c0b0        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
-                0x000000000800c0b8                __exidx_end = .
+ .ARM.exidx     0x000000000800bbc0        0x8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+                0x000000000800bbc8                __exidx_end = .
 
-.rel.dyn        0x000000000800c0b8        0x0
- .rel.iplt      0x000000000800c0b8        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.rel.dyn        0x000000000800bbc8        0x0
+ .rel.iplt      0x000000000800bbc8        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.preinit_array  0x000000000800c0b8        0x0
-                0x000000000800c0b8                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000000000800bbc8        0x0
+                0x000000000800bbc8                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x000000000800c0b8                PROVIDE (__preinit_array_end = .)
+                0x000000000800bbc8                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x000000000800c0b8        0x8
-                0x000000000800c0b8                PROVIDE (__init_array_start = .)
+.init_array     0x000000000800bbc8        0x8
+                0x000000000800bbc8                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x000000000800c0b8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
+                0x000000000800bbc8        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x000000000800c0bc        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x000000000800c0c0                PROVIDE (__init_array_end = .)
+ .init_array    0x000000000800bbcc        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x000000000800bbd0                PROVIDE (__init_array_end = .)
 
-.fini_array     0x000000000800c0c0        0x4
-                0x000000000800c0c0                PROVIDE (__fini_array_start = .)
+.fini_array     0x000000000800bbd0        0x4
+                0x000000000800bbd0                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x000000000800c0c0        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x000000000800c0c4                PROVIDE (__fini_array_end = .)
-                0x000000000800c0c4                _sidata = LOADADDR (.data)
+ .fini_array    0x000000000800bbd0        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x000000000800bbd4                PROVIDE (__fini_array_end = .)
+                0x000000000800bbd4                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x9b8 load address 0x000000000800c0c4
+.data           0x0000000020000000      0x9b8 load address 0x000000000800bbd4
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2208,12 +2210,12 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
                 0x000000002000084c                __global_locale
                 0x00000000200009b8                . = ALIGN (0x4)
                 0x00000000200009b8                _edata = .
-                0x000000000800ca7c                _siccmram = LOADADDR (.ccmram)
+                0x000000000800c58c                _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x00000000200009b8        0x0 load address 0x000000000800ca7c
+.igot.plt       0x00000000200009b8        0x0 load address 0x000000000800c58c
  .igot.plt      0x00000000200009b8        0x0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x000000000800ca7c
+.ccmram         0x0000000010000000        0x0 load address 0x000000000800c58c
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)
@@ -2222,7 +2224,7 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x00000000200009b8      0x7c0
+.bss            0x00000000200009b8      0x7cc
                 0x00000000200009b8                _sbss = .
                 0x00000000200009b8                __bss_start__ = _sbss
  *(.bss)
@@ -2258,120 +2260,130 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .bss.Recieved_Message_Box
                 0x0000000020000a34       0x1c CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
                 0x0000000020000a34                Recieved_Message_Box
+ .bss.Fixed_Pos_X
+                0x0000000020000a50        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000a50                Fixed_Pos_X
+ .bss.Fixed_Pos_Y
+                0x0000000020000a54        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000a54                Fixed_Pos_Y
  .bss.Location_Data
-                0x0000000020000a50        0xc CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000a50                Location_Data
+                0x0000000020000a58        0xc CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000a58                Location_Data
  .bss.Locator_Rx_Data
-                0x0000000020000a5c       0xc6 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000a5c                Locator_Rx_Data
- *fill*         0x0000000020000b22        0x2 
+                0x0000000020000a64       0xc6 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000a64                Locator_Rx_Data
+ *fill*         0x0000000020000b2a        0x2 
  .bss.VegaData_u
-                0x0000000020000b24       0x18 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
- .bss.a         0x0000000020000b3c        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000b3c                a
+                0x0000000020000b2c       0x18 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+ .bss.a         0x0000000020000b44        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000b44                a
  .bss.start_locator
-                0x0000000020000b40        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000b40                start_locator
+                0x0000000020000b48        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000b48                start_locator
  .bss.this_time_rx_len.0
-                0x0000000020000b44        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
- *fill*         0x0000000020000b46        0x2 
- .bss.x         0x0000000020000b48        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000b48                x
- .bss.y         0x0000000020000b4c        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                0x0000000020000b4c                y
+                0x0000000020000b4c        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+ *fill*         0x0000000020000b4e        0x2 
+ .bss.x         0x0000000020000b50        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000b50                x
+ .bss.y         0x0000000020000b54        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                0x0000000020000b54                y
  .bss.Angle_PID
-                0x0000000020000b50       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x0000000020000b50                Angle_PID
- .bss.X_PID     0x0000000020000b88       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x0000000020000b88                X_PID
- .bss.Y_PID     0x0000000020000bc0       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
-                0x0000000020000bc0                Y_PID
- .bss.Current   0x0000000020000bf8        0xa CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x0000000020000bf8                Current
- *fill*         0x0000000020000c02        0x2 
+                0x0000000020000b58       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000020000b58                Angle_PID
+ .bss.X_PID     0x0000000020000b90       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000020000b90                X_PID
+ .bss.Y_PID     0x0000000020000bc8       0x38 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+                0x0000000020000bc8                Y_PID
+ .bss.Current   0x0000000020000c00        0xa CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x0000000020000c00                Current
+ *fill*         0x0000000020000c0a        0x2 
  .bss.PID_Control_Num
-                0x0000000020000c04      0x1c0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
-                0x0000000020000c04                PID_Control_Num
+                0x0000000020000c0c      0x1c0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+                0x0000000020000c0c                PID_Control_Num
  .bss.Remote_Controller_Data
-                0x0000000020000dc4       0x16 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x0000000020000dc4                Remote_Controller_Data
- *fill*         0x0000000020000dda        0x2 
+                0x0000000020000dcc       0x16 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x0000000020000dcc                Remote_Controller_Data
+ *fill*         0x0000000020000de2        0x2 
  .bss.SBUS_RX_Buf
-                0x0000000020000ddc       0x48 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                0x0000000020000ddc                SBUS_RX_Buf
+                0x0000000020000de4       0x48 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                0x0000000020000de4                SBUS_RX_Buf
  .bss.this_time_rx_len.0
-                0x0000000020000e24        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
- *fill*         0x0000000020000e26        0x2 
- .bss.ap.2      0x0000000020000e28        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
- .bss.len.0     0x0000000020000e2c        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+                0x0000000020000e2c        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
  *fill*         0x0000000020000e2e        0x2 
- .bss.tx_buf.1  0x0000000020000e30      0x100 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .bss.ap.2      0x0000000020000e30        0x4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .bss.len.0     0x0000000020000e34        0x2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ *fill*         0x0000000020000e36        0x2 
+ .bss.tx_buf.1  0x0000000020000e38      0x100 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
  .bss.HAL_RCC_CAN1_CLK_ENABLED
-                0x0000000020000f30        0x4 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
- .bss.hcan1     0x0000000020000f34       0x28 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
-                0x0000000020000f34                hcan1
- .bss.hcan2     0x0000000020000f5c       0x28 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
-                0x0000000020000f5c                hcan2
+                0x0000000020000f38        0x4 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .bss.hcan1     0x0000000020000f3c       0x28 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+                0x0000000020000f3c                hcan1
+ .bss.hcan2     0x0000000020000f64       0x28 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+                0x0000000020000f64                hcan2
+ .bss.Arm_Finished
+                0x0000000020000f8c        0x4 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000020000f8c                Arm_Finished
  .bss.heap_end.0
-                0x0000000020000f84        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000020000f90        0x4 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
  .bss.hdma_usart1_rx
-                0x0000000020000f88       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x0000000020000f88                hdma_usart1_rx
+                0x0000000020000f94       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x0000000020000f94                hdma_usart1_rx
  .bss.hdma_usart1_tx
-                0x0000000020000fe8       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x0000000020000fe8                hdma_usart1_tx
+                0x0000000020000ff4       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x0000000020000ff4                hdma_usart1_tx
  .bss.hdma_usart3_rx
-                0x0000000020001048       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x0000000020001048                hdma_usart3_rx
- .bss.huart1    0x00000000200010a8       0x44 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x00000000200010a8                huart1
- .bss.huart3    0x00000000200010ec       0x44 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
-                0x00000000200010ec                huart3
+                0x0000000020001054       0x60 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x0000000020001054                hdma_usart3_rx
+ .bss.huart1    0x00000000200010b4       0x44 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x00000000200010b4                huart1
+ .bss.huart3    0x00000000200010f8       0x44 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x00000000200010f8                huart3
  .bss.__lock___atexit_recursive_mutex
-                0x0000000020001130        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x0000000020001130                __lock___atexit_recursive_mutex
- *fill*         0x0000000020001131        0x3 
- .bss.__lock___malloc_recursive_mutex
-                0x0000000020001134        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x0000000020001134                __lock___malloc_recursive_mutex
- *fill*         0x0000000020001135        0x3 
- .bss.__lock___sfp_recursive_mutex
-                0x0000000020001138        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x0000000020001138                __lock___sfp_recursive_mutex
- *fill*         0x0000000020001139        0x3 
- .bss.__lock___sinit_recursive_mutex
                 0x000000002000113c        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
-                0x000000002000113c                __lock___sinit_recursive_mutex
+                0x000000002000113c                __lock___atexit_recursive_mutex
  *fill*         0x000000002000113d        0x3 
+ .bss.__lock___malloc_recursive_mutex
+                0x0000000020001140        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x0000000020001140                __lock___malloc_recursive_mutex
+ *fill*         0x0000000020001141        0x3 
+ .bss.__lock___sfp_recursive_mutex
+                0x0000000020001144        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x0000000020001144                __lock___sfp_recursive_mutex
+ *fill*         0x0000000020001145        0x3 
+ .bss.__lock___sinit_recursive_mutex
+                0x0000000020001148        0x1 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+                0x0000000020001148                __lock___sinit_recursive_mutex
+ *fill*         0x0000000020001149        0x3 
  .bss.__malloc_current_mallinfo
-                0x0000000020001140       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
-                0x0000000020001140                __malloc_current_mallinfo
+                0x000000002000114c       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+                0x000000002000114c                __malloc_current_mallinfo
  .bss.__malloc_max_sbrked_mem
-                0x0000000020001168        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
-                0x0000000020001168                __malloc_max_sbrked_mem
+                0x0000000020001174        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+                0x0000000020001174                __malloc_max_sbrked_mem
  .bss.__malloc_max_total_mem
-                0x000000002000116c        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
-                0x000000002000116c                __malloc_max_total_mem
+                0x0000000020001178        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+                0x0000000020001178                __malloc_max_total_mem
  .bss.__malloc_top_pad
-                0x0000000020001170        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
-                0x0000000020001170                __malloc_top_pad
- .bss.errno     0x0000000020001174        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
-                0x0000000020001174                errno
+                0x000000002000117c        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+                0x000000002000117c                __malloc_top_pad
+ .bss.errno     0x0000000020001180        0x4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
+                0x0000000020001180                errno
  *(COMMON)
-                0x0000000020001178                . = ALIGN (0x4)
-                0x0000000020001178                _ebss = .
-                0x0000000020001178                __bss_end__ = _ebss
+                0x0000000020001184                . = ALIGN (0x4)
+                0x0000000020001184                _ebss = .
+                0x0000000020001184                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020001178      0x600
-                0x0000000020001178                . = ALIGN (0x8)
-                0x0000000020001178                PROVIDE (end = .)
+                0x0000000020001184      0x604
+                0x0000000020001188                . = ALIGN (0x8)
+ *fill*         0x0000000020001184        0x4 
+                0x0000000020001188                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
-                0x0000000020001378                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020001178      0x200 
-                0x0000000020001778                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020001378      0x400 
-                0x0000000020001778                . = ALIGN (0x8)
+                0x0000000020001388                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020001188      0x200 
+                0x0000000020001788                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020001388      0x400 
+                0x0000000020001788                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2577,7 +2589,7 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
 LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a
 LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a
 
-.debug_info     0x0000000000000000    0x10df1
+.debug_info     0x0000000000000000    0x113f0
  .debug_info    0x0000000000000000      0x9f0 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_info    0x00000000000009f0     0x126a CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_info    0x0000000000001c5a     0x1098 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2586,24 +2598,24 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_info    0x0000000000003fe1      0xb03 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
  .debug_info    0x0000000000004ae4     0x4233 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .debug_info    0x0000000000008d17      0xb70 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
- .debug_info    0x0000000000009887      0xa1c CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
- .debug_info    0x000000000000a2a3      0x419 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
- .debug_info    0x000000000000a6bc      0x463 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
- .debug_info    0x000000000000ab1f      0x3f7 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
- .debug_info    0x000000000000af16      0xac7 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
- .debug_info    0x000000000000b9dd      0x712 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
- .debug_info    0x000000000000c0ef      0xcb6 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
- .debug_info    0x000000000000cda5      0x581 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
- .debug_info    0x000000000000d326      0x4d1 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
- .debug_info    0x000000000000d7f7     0x1058 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_info    0x000000000000e84f      0x2a4 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_info    0x000000000000eaf3      0x897 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_info    0x000000000000f38a      0x835 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_info    0x000000000000fbbf      0x37d CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_info    0x000000000000ff3c      0xe93 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
- .debug_info    0x0000000000010dcf       0x22 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_info    0x0000000000009887      0xa62 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+ .debug_info    0x000000000000a2e9      0x419 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
+ .debug_info    0x000000000000a702      0x463 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+ .debug_info    0x000000000000ab65      0x3f7 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+ .debug_info    0x000000000000af5c      0xb37 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+ .debug_info    0x000000000000ba93      0x712 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .debug_info    0x000000000000c1a5      0xcb6 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .debug_info    0x000000000000ce5b      0x581 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
+ .debug_info    0x000000000000d3dc      0x4d1 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
+ .debug_info    0x000000000000d8ad     0x15a1 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_info    0x000000000000ee4e      0x2a4 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_info    0x000000000000f0f2      0x897 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_info    0x000000000000f989      0x835 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_info    0x00000000000101be      0x37d CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_info    0x000000000001053b      0xe93 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_info    0x00000000000113ce       0x22 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_abbrev   0x0000000000000000     0x2df4
+.debug_abbrev   0x0000000000000000     0x2e40
  .debug_abbrev  0x0000000000000000      0x206 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_abbrev  0x0000000000000206      0x267 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_abbrev  0x000000000000046d      0x36a CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2621,15 +2633,15 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_abbrev  0x0000000000001f87      0x1f6 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
  .debug_abbrev  0x000000000000217d      0x126 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
  .debug_abbrev  0x00000000000022a3      0x14e CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
- .debug_abbrev  0x00000000000023f1      0x267 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_abbrev  0x0000000000002658       0xd1 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_abbrev  0x0000000000002729      0x1d7 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_abbrev  0x0000000000002900      0x1da CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_abbrev  0x0000000000002ada      0x119 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_abbrev  0x0000000000002bf3      0x1ef CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
- .debug_abbrev  0x0000000000002de2       0x12 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_abbrev  0x00000000000023f1      0x2b3 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_abbrev  0x00000000000026a4       0xd1 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_abbrev  0x0000000000002775      0x1d7 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_abbrev  0x000000000000294c      0x1da CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_abbrev  0x0000000000002b26      0x119 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_abbrev  0x0000000000002c3f      0x1ef CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_abbrev  0x0000000000002e2e       0x12 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_loc      0x0000000000000000     0x876f
+.debug_loc      0x0000000000000000     0x892a
  .debug_loc     0x0000000000000000      0x141 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_loc     0x0000000000000141      0xde6 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_loc     0x0000000000000f27      0x744 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2642,15 +2654,15 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_loc     0x0000000000007a16      0x205 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
  .debug_loc     0x0000000000007c1b      0x14b CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
  .debug_loc     0x0000000000007d66       0xb6 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
- .debug_loc     0x0000000000007e1c      0x161 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
- .debug_loc     0x0000000000007f7d       0x32 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
- .debug_loc     0x0000000000007faf       0xcb CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
- .debug_loc     0x000000000000807a       0xbb CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_loc     0x0000000000008135      0x436 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_loc     0x000000000000856b      0x158 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_loc     0x00000000000086c3       0xac CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_loc     0x0000000000007e1c      0x1b7 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+ .debug_loc     0x0000000000007fd3       0x32 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .debug_loc     0x0000000000008005       0xcb CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .debug_loc     0x00000000000080d0      0x220 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_loc     0x00000000000082f0      0x436 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_loc     0x0000000000008726      0x158 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_loc     0x000000000000887e       0xac CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
 
-.debug_aranges  0x0000000000000000      0xa98
+.debug_aranges  0x0000000000000000      0xab0
  .debug_aranges
                 0x0000000000000000       0xf0 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_aranges
@@ -2686,21 +2698,21 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_aranges
                 0x0000000000000838       0x20 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
  .debug_aranges
-                0x0000000000000858       0x60 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                0x0000000000000858       0x78 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
  .debug_aranges
-                0x00000000000008b8       0x20 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+                0x00000000000008d0       0x20 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
  .debug_aranges
-                0x00000000000008d8       0x88 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+                0x00000000000008f0       0x88 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
  .debug_aranges
-                0x0000000000000960       0xb0 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+                0x0000000000000978       0xb0 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
  .debug_aranges
-                0x0000000000000a10       0x28 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+                0x0000000000000a28       0x28 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
  .debug_aranges
-                0x0000000000000a38       0x38 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+                0x0000000000000a50       0x38 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
  .debug_aranges
-                0x0000000000000a70       0x28 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+                0x0000000000000a88       0x28 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_ranges   0x0000000000000000      0x9c8
+.debug_ranges   0x0000000000000000      0x9e0
  .debug_ranges  0x0000000000000000       0xe0 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_ranges  0x00000000000000e0      0x128 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_ranges  0x0000000000000208       0xf8 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2718,15 +2730,15 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_ranges  0x00000000000007a8       0x28 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
  .debug_ranges  0x00000000000007d0       0x10 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
  .debug_ranges  0x00000000000007e0       0x10 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
- .debug_ranges  0x00000000000007f0       0x50 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_ranges  0x0000000000000840       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_ranges  0x0000000000000850       0x78 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_ranges  0x00000000000008c8       0xa0 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_ranges  0x0000000000000968       0x18 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_ranges  0x0000000000000980       0x28 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
- .debug_ranges  0x00000000000009a8       0x20 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_ranges  0x00000000000007f0       0x68 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_ranges  0x0000000000000858       0x10 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_ranges  0x0000000000000868       0x78 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_ranges  0x00000000000008e0       0xa0 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_ranges  0x0000000000000980       0x18 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_ranges  0x0000000000000998       0x28 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_ranges  0x00000000000009c0       0x20 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_line     0x0000000000000000     0xcf0a
+.debug_line     0x0000000000000000     0xd075
  .debug_line    0x0000000000000000      0x63f CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_line    0x000000000000063f     0x11b7 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_line    0x00000000000017f6      0x852 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2735,24 +2747,24 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_line    0x000000000000369d      0xbb5 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
  .debug_line    0x0000000000004252     0x46b2 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
  .debug_line    0x0000000000008904      0x631 CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
- .debug_line    0x0000000000008f35      0x5ed CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
- .debug_line    0x0000000000009522      0x3a2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
- .debug_line    0x00000000000098c4      0x336 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
- .debug_line    0x0000000000009bfa      0x333 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
- .debug_line    0x0000000000009f2d      0x68e CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
- .debug_line    0x000000000000a5bb      0x42f CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
- .debug_line    0x000000000000a9ea      0x59b CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
- .debug_line    0x000000000000af85      0x22e CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
- .debug_line    0x000000000000b1b3      0x285 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
- .debug_line    0x000000000000b438      0x787 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_line    0x000000000000bbbf      0x1c8 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_line    0x000000000000bd87      0x3e3 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_line    0x000000000000c16a      0x489 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_line    0x000000000000c5f3      0x290 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_line    0x000000000000c883      0x5d5 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
- .debug_line    0x000000000000ce58       0xb2 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_line    0x0000000000008f35      0x5fd CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+ .debug_line    0x0000000000009532      0x3a2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
+ .debug_line    0x00000000000098d4      0x336 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+ .debug_line    0x0000000000009c0a      0x333 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+ .debug_line    0x0000000000009f3d      0x6b4 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+ .debug_line    0x000000000000a5f1      0x42f CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .debug_line    0x000000000000aa20      0x59b CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .debug_line    0x000000000000afbb      0x22e CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
+ .debug_line    0x000000000000b1e9      0x285 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
+ .debug_line    0x000000000000b46e      0x8bc CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_line    0x000000000000bd2a      0x1c8 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_line    0x000000000000bef2      0x3e3 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_line    0x000000000000c2d5      0x489 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_line    0x000000000000c75e      0x290 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_line    0x000000000000c9ee      0x5d5 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_line    0x000000000000cfc3       0xb2 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
 
-.debug_str      0x0000000000000000     0x3aaa
+.debug_str      0x0000000000000000     0x3b28
  .debug_str     0x0000000000000000      0xb50 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
                                         0xbae (size before relaxing)
  .debug_str     0x0000000000000b50      0x7fc CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
@@ -2769,37 +2781,37 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
                                         0xdad (size before relaxing)
  .debug_str     0x0000000000002aeb      0x1da CMakeFiles/Base_Moving.elf.dir/Lib/Src/CAN_Operation.c.obj
                                         0x83a (size before relaxing)
- .debug_str     0x0000000000002cc5      0x1b6 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
-                                        0x7e5 (size before relaxing)
- .debug_str     0x0000000000002e7b       0xd3 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
+ .debug_str     0x0000000000002cc5      0x1c2 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Location_Module_Recieve.c.obj
+                                        0x7fd (size before relaxing)
+ .debug_str     0x0000000000002e87       0xd3 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
                                         0x32f (size before relaxing)
- .debug_str     0x0000000000002f4e      0x187 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
+ .debug_str     0x0000000000002f5a      0x187 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
                                         0x39b (size before relaxing)
- .debug_str     0x00000000000030d5       0x96 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
+ .debug_str     0x00000000000030e1       0x96 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
                                         0x38a (size before relaxing)
- .debug_str     0x000000000000316b      0x12f CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
-                                        0x858 (size before relaxing)
- .debug_str     0x000000000000329a       0xdf CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .debug_str     0x0000000000003177      0x13b CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+                                        0x886 (size before relaxing)
+ .debug_str     0x00000000000032b2       0xdf CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
                                         0x6ee (size before relaxing)
- .debug_str     0x0000000000003379       0x7b CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .debug_str     0x0000000000003391       0x7b CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
                                         0xbd0 (size before relaxing)
- .debug_str     0x00000000000033f4       0x4a CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
+ .debug_str     0x000000000000340c       0x4a CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
                                         0x812 (size before relaxing)
- .debug_str     0x000000000000343e       0x4c CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
+ .debug_str     0x0000000000003456       0x4c CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
                                         0x3bb (size before relaxing)
- .debug_str     0x000000000000348a       0xfd CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
-                                        0x824 (size before relaxing)
- .debug_str     0x0000000000003587       0x4c CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_str     0x00000000000034a2      0x163 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+                                        0x919 (size before relaxing)
+ .debug_str     0x0000000000003605       0x4c CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
                                         0x30a (size before relaxing)
- .debug_str     0x00000000000035d3      0x147 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_str     0x0000000000003651      0x147 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
                                         0x824 (size before relaxing)
- .debug_str     0x000000000000371a      0x26f CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_str     0x0000000000003798      0x26f CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
                                         0x47c (size before relaxing)
- .debug_str     0x0000000000003989       0x76 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_str     0x0000000000003a07       0x76 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
                                         0x370 (size before relaxing)
- .debug_str     0x00000000000039ff       0x4b CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_str     0x0000000000003a7d       0x4b CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
                                         0xdd9 (size before relaxing)
- .debug_str     0x0000000000003a4a       0x60 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
+ .debug_str     0x0000000000003ac8       0x60 CMakeFiles/Base_Moving.elf.dir/startup/startup_stm32f407xx.s.obj
                                          0xa6 (size before relaxing)
 
 .comment        0x0000000000000000       0x49
@@ -2828,7 +2840,7 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .comment       0x0000000000000049       0x4a CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
  .comment       0x0000000000000049       0x4a CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
 
-.debug_frame    0x0000000000000000     0x2fd8
+.debug_frame    0x0000000000000000     0x303c
  .debug_frame   0x0000000000000000      0x1ec CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
  .debug_frame   0x00000000000001ec      0x2d0 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj
  .debug_frame   0x00000000000004bc      0x148 CMakeFiles/Base_Moving.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
@@ -2841,76 +2853,76 @@ LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-
  .debug_frame   0x0000000000001104       0x60 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Move_Controlor.c.obj
  .debug_frame   0x0000000000001164       0x9c CMakeFiles/Base_Moving.elf.dir/Lib/Src/Navi_Control.c.obj
  .debug_frame   0x0000000000001200       0x78 CMakeFiles/Base_Moving.elf.dir/Lib/Src/PID_Controlor.c.obj
- .debug_frame   0x0000000000001278       0xa0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
- .debug_frame   0x0000000000001318       0x6c CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
- .debug_frame   0x0000000000001384       0x78 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
- .debug_frame   0x00000000000013fc       0x30 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
- .debug_frame   0x000000000000142c       0x34 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
- .debug_frame   0x0000000000001460       0xdc CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
- .debug_frame   0x000000000000153c       0x28 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
- .debug_frame   0x0000000000001564      0x120 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
- .debug_frame   0x0000000000001684      0x1a8 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
- .debug_frame   0x000000000000182c       0x30 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
- .debug_frame   0x000000000000185c       0x80 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
- .debug_frame   0x00000000000018dc       0xac /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x0000000000001988       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00000000000019ac       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_addsubsf3.o)
- .debug_frame   0x00000000000019f8       0x38 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_muldivsf3.o)
- .debug_frame   0x0000000000001a30       0xc8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_cmpsf2.o)
- .debug_frame   0x0000000000001af8       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_fixsfsi.o)
- .debug_frame   0x0000000000001b1c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0000000000001b48       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
- .debug_frame   0x0000000000001b7c       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-errno.o)
- .debug_frame   0x0000000000001b9c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-init.o)
- .debug_frame   0x0000000000001bc8       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
- .debug_frame   0x0000000000001bf4       0x54 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vsprintf.o)
- .debug_frame   0x0000000000001c48       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
- .debug_frame   0x0000000000001ca4       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-atexit.o)
- .debug_frame   0x0000000000001cc4       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fini.o)
- .debug_frame   0x0000000000001cf8       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
- .debug_frame   0x0000000000001da8       0x44 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
- .debug_frame   0x0000000000001dec       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__atexit.o)
- .debug_frame   0x0000000000001e20       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
- .debug_frame   0x0000000000001eac       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
- .debug_frame   0x0000000000001f38       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
- .debug_frame   0x0000000000001f78       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
- .debug_frame   0x0000000000001fc4       0x30 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
- .debug_frame   0x0000000000001ff4      0x264 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
- .debug_frame   0x0000000000002258       0x30 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-s_frexp.o)
- .debug_frame   0x0000000000002288       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
- .debug_frame   0x00000000000022b4       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
- .debug_frame   0x00000000000022e0       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfiprintf.o)
- .debug_frame   0x0000000000002358       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
- .debug_frame   0x0000000000002398       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-callocr.o)
- .debug_frame   0x00000000000023c4       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
- .debug_frame   0x0000000000002434       0x68 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
- .debug_frame   0x000000000000249c       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
- .debug_frame   0x00000000000024e8       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
- .debug_frame   0x0000000000002528       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
- .debug_frame   0x0000000000002570       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
- .debug_frame   0x00000000000025d4       0xdc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
- .debug_frame   0x00000000000026b0       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
- .debug_frame   0x00000000000026ec       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
- .debug_frame   0x0000000000002718       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
- .debug_frame   0x0000000000002740       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
- .debug_frame   0x00000000000027b0      0x154 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
- .debug_frame   0x0000000000002904       0x88 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
- .debug_frame   0x000000000000298c       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
- .debug_frame   0x00000000000029f0       0x54 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
- .debug_frame   0x0000000000002a44       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
- .debug_frame   0x0000000000002ab4      0x114 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
- .debug_frame   0x0000000000002bc8       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
- .debug_frame   0x0000000000002c04       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
- .debug_frame   0x0000000000002c90       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
- .debug_frame   0x0000000000002cdc       0x60 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
- .debug_frame   0x0000000000002d3c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
- .debug_frame   0x0000000000002d68       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
- .debug_frame   0x0000000000002d94       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
- .debug_frame   0x0000000000002dd0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
- .debug_frame   0x0000000000002dfc       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
- .debug_frame   0x0000000000002e28       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
- .debug_frame   0x0000000000002e54       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
- .debug_frame   0x0000000000002e80       0x50 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x0000000000002ed0       0xc4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x0000000000002f94       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x0000000000002fb4       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x0000000000001278       0xb0 CMakeFiles/Base_Moving.elf.dir/Lib/Src/Remote_Controller.c.obj
+ .debug_frame   0x0000000000001328       0x6c CMakeFiles/Base_Moving.elf.dir/Lib/Src/Usart_Printf.c.obj
+ .debug_frame   0x0000000000001394       0x78 CMakeFiles/Base_Moving.elf.dir/Src/can.c.obj
+ .debug_frame   0x000000000000140c       0x30 CMakeFiles/Base_Moving.elf.dir/Src/dma.c.obj
+ .debug_frame   0x000000000000143c       0x34 CMakeFiles/Base_Moving.elf.dir/Src/gpio.c.obj
+ .debug_frame   0x0000000000001470      0x130 CMakeFiles/Base_Moving.elf.dir/Src/main.c.obj
+ .debug_frame   0x00000000000015a0       0x28 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_hal_msp.c.obj
+ .debug_frame   0x00000000000015c8      0x120 CMakeFiles/Base_Moving.elf.dir/Src/stm32f4xx_it.c.obj
+ .debug_frame   0x00000000000016e8      0x1a8 CMakeFiles/Base_Moving.elf.dir/Src/syscalls.c.obj
+ .debug_frame   0x0000000000001890       0x30 CMakeFiles/Base_Moving.elf.dir/Src/system_stm32f4xx.c.obj
+ .debug_frame   0x00000000000018c0       0x80 CMakeFiles/Base_Moving.elf.dir/Src/usart.c.obj
+ .debug_frame   0x0000000000001940       0xac /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00000000000019ec       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x0000000000001a10       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_addsubsf3.o)
+ .debug_frame   0x0000000000001a5c       0x38 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_muldivsf3.o)
+ .debug_frame   0x0000000000001a94       0xc8 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_cmpsf2.o)
+ .debug_frame   0x0000000000001b5c       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_fixsfsi.o)
+ .debug_frame   0x0000000000001b80       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000000000001bac       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000000000001be0       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-errno.o)
+ .debug_frame   0x0000000000001c00       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-init.o)
+ .debug_frame   0x0000000000001c2c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
+ .debug_frame   0x0000000000001c58       0x54 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vsprintf.o)
+ .debug_frame   0x0000000000001cac       0x5c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000001d08       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000001d28       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fini.o)
+ .debug_frame   0x0000000000001d5c       0xb0 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+ .debug_frame   0x0000000000001e0c       0x44 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfprintf.o)
+ .debug_frame   0x0000000000001e50       0x34 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-__atexit.o)
+ .debug_frame   0x0000000000001e84       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-dtoa.o)
+ .debug_frame   0x0000000000001f10       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
+ .debug_frame   0x0000000000001f9c       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
+ .debug_frame   0x0000000000001fdc       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000002028       0x30 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
+ .debug_frame   0x0000000000002058      0x264 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mprec.o)
+ .debug_frame   0x00000000000022bc       0x30 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-s_frexp.o)
+ .debug_frame   0x00000000000022ec       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000002318       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
+ .debug_frame   0x0000000000002344       0x78 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-svfiprintf.o)
+ .debug_frame   0x00000000000023bc       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
+ .debug_frame   0x00000000000023fc       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-callocr.o)
+ .debug_frame   0x0000000000002428       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
+ .debug_frame   0x0000000000002498       0x68 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
+ .debug_frame   0x0000000000002500       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x000000000000254c       0x40 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
+ .debug_frame   0x000000000000258c       0x48 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
+ .debug_frame   0x00000000000025d4       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
+ .debug_frame   0x0000000000002638       0xdc /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+ .debug_frame   0x0000000000002714       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
+ .debug_frame   0x0000000000002750       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
+ .debug_frame   0x000000000000277c       0x28 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
+ .debug_frame   0x00000000000027a4       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
+ .debug_frame   0x0000000000002814      0x154 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+ .debug_frame   0x0000000000002968       0x88 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
+ .debug_frame   0x00000000000029f0       0x64 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
+ .debug_frame   0x0000000000002a54       0x54 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
+ .debug_frame   0x0000000000002aa8       0x70 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
+ .debug_frame   0x0000000000002b18      0x114 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
+ .debug_frame   0x0000000000002c2c       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
+ .debug_frame   0x0000000000002c68       0x8c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+ .debug_frame   0x0000000000002cf4       0x4c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
+ .debug_frame   0x0000000000002d40       0x60 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
+ .debug_frame   0x0000000000002da0       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
+ .debug_frame   0x0000000000002dcc       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
+ .debug_frame   0x0000000000002df8       0x3c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
+ .debug_frame   0x0000000000002e34       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
+ .debug_frame   0x0000000000002e60       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
+ .debug_frame   0x0000000000002e8c       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
+ .debug_frame   0x0000000000002eb8       0x2c /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
+ .debug_frame   0x0000000000002ee4       0x50 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x0000000000002f34       0xc4 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x0000000000002ff8       0x20 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x0000000000003018       0x24 /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a(_arm_fixdfsi.o)
